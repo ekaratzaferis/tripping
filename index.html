@@ -7,6 +7,16 @@
   <meta name="description" content="An all-in-one live trip guide: plan, checklists, live map, tips and a route timeline.">
   <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+  <script>
+    // Apply a forced light/dark theme before first paint (Settings → Appearance).
+    try {
+      var t = JSON.parse(localStorage.getItem('triparw:settings') || '{}').theme;
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.dataset.theme = t;
+        document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.content = t === 'dark' ? '#0E0F12' : '#FFFFFF'; });
+      }
+    } catch (e) {}
+  </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">

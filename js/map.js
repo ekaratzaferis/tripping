@@ -6,7 +6,10 @@
 import { settings } from './store.js';
 import { bus, esc, cat } from './util.js';
 
-const dark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+const dark = () => {
+  const forced = document.documentElement.dataset.theme;
+  return forced ? forced === 'dark' : !!window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+};
 
 let googlePromise;
 function loadGoogle(key) {
@@ -23,17 +26,56 @@ function loadGoogle(key) {
   }));
 }
 
+// Safety net on top of Google's own quotas: after this many Google map loads
+// in a day (on this device) we switch to the free map until tomorrow.
+const DAILY_GOOGLE_LOADS = 250;
+function takeGoogleLoad() {
+  const today = new Date().toISOString().slice(0, 10);
+  let c;
+  try { c = JSON.parse(localStorage.getItem('triparw:gmLoads') || '{}'); } catch { c = {}; }
+  if (c.day !== today) c = { day: today, n: 0 };
+  if (c.n >= DAILY_GOOGLE_LOADS) return false;
+  c.n++;
+  try { localStorage.setItem('triparw:gmLoads', JSON.stringify(c)); } catch { /* ignore */ }
+  return true;
+}
+
 export async function createMap(el, opts) {
   const key = settings.get().gmapsKey?.trim();
-  if (key) {
+  if (key && !takeGoogleLoad()) {
+    bus.emit('toast', 'Daily Google Maps limit reached, using the free map until tomorrow.');
+  } else if (key) {
     try {
-      return googleMap(await loadGoogle(key), el, opts);
+      return skipUnchanged(googleMap(await loadGoogle(key), el, opts));
     } catch (e) {
       console.warn(e);
       bus.emit('toast', 'Google Maps unavailable, using the free map instead.');
     }
   }
-  return vectorMap(el, opts);
+  return skipUnchanged(await vectorMap(el, opts));
+}
+
+// Every map created on the page. Google bills per map *created*, so we never
+// recreate one: theme changes restyle these in place.
+const liveMaps = [];
+export function restyleMaps() {
+  liveMaps.forEach((m) => m.setTheme?.());
+}
+
+// Views redraw on every GPS tick. Recreating identical markers would drop a
+// tap that lands mid-redraw, so only touch a layer when its content changed.
+function skipUnchanged(api) {
+  const last = {};
+  const same = (k, v) => { if (last[k] === v) return true; last[k] = v; return false; };
+  const { setMarkers, setLines } = api;
+  api.setMarkers = (name, items) => {
+    if (!same(`m:${name}`, JSON.stringify(items.map((i) => [i.lat, i.lng, i.html, i.z, i.title])))) setMarkers(name, items);
+  };
+  api.setLines = (name, segs) => {
+    if (!same(`l:${name}`, JSON.stringify(segs))) setLines(name, segs);
+  };
+  liveMaps.push(api);
+  return api;
 }
 
 /* ---------- marker HTML ---------- */
@@ -202,6 +244,15 @@ async function vectorMap(el, { center, zoom = 14, onClick, onUserMove }) {
 
   return {
     kind: 'maplibre',
+    async setTheme() {
+      try {
+        const next = await googleLikeStyle();
+        for (const l of next.layers) {
+          if (!map.getLayer(l.id)) continue;
+          for (const [k, v] of Object.entries(l.paint || {})) map.setPaintProperty(l.id, k, v);
+        }
+      } catch { /* offline: keep current colours */ }
+    },
     setUser(p) {
       if (!p) { me?.remove(); me = null; map.getSource('me-acc')?.setData(empty); return; }
       if (!me) me = makeMarker({ ...p, html: userHtml(), z: 2000 });
@@ -295,6 +346,7 @@ function googleMap(gm, el, { center, zoom = 14, onClick, onUserMove }) {
 
   return {
     kind: 'google',
+    setTheme: () => map.setOptions({ styles: dark() ? GOOGLE_DARK : GOOGLE_STYLE }),
     setUser(p) {
       if (!p) { me?.setMap(null); acc?.setMap(null); me = acc = null; return; }
       if (!me) {

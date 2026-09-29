@@ -30,7 +30,8 @@ python3 -m http.server 8000
 - **With a key:** real Google Maps (flat 2D roadmap). Paste a *Maps JavaScript API* key in **Settings → Map**.
   Restrict the key to your Pages domain (HTTP referrer `https://<you>.github.io/*`) and set a daily quota cap.
   Google bills per *map load*: the app creates at most 2 per page open, and panning, zooming and GPS updates are free,
-  so a trip stays far inside the 10K/month free tier.
+  so a trip stays far inside the 10K/month free tier. Maps are never recreated (theme changes restyle them in place),
+  and after 250 Google map loads in a day the app switches to the free map until the next day.
 
 ## What's where
 

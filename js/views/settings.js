@@ -22,6 +22,12 @@ export function createSettingsView(root, ctx) {
       <header class="page-head"><h1>Settings</h1><p class="muted">Everything is stored on this device only.</p></header>
 
       <section class="card">
+        <h3>🌓 Appearance</h3>
+        <div class="seg">${[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']].map(([v, l]) => `<button data-theme-pick="${v}" class="${(s.theme || 'auto') === v ? 'on' : ''}">${l}</button>`).join('')}</div>
+        <p class="muted small">Auto follows your phone's setting.</p>
+      </section>
+
+      <section class="card">
         <h3>${icon('map')} Map</h3>
         <p class="muted small">Add a Google Maps JavaScript API key to use Google's flat 2D map. Without one, the app uses OpenStreetMap, which needs no key.
           Restrict the key to your GitHub Pages domain in the <a href="https://console.cloud.google.com/google/maps-apis/credentials" target="_blank" rel="noopener">Google Cloud console</a>.</p>
@@ -158,8 +164,13 @@ export function createSettingsView(root, ctx) {
   });
 
   root.addEventListener('click', async (e) => {
-    const t = e.target.closest('[data-act],[data-terminal],[data-geo],[data-jump]');
+    const t = e.target.closest('[data-act],[data-terminal],[data-geo],[data-jump],[data-theme-pick]');
     if (!t) return;
+    if (t.dataset.themePick) {
+      // No reload: a reload would create new (billable) Google map loads.
+      settings.set({ theme: t.dataset.themePick });
+      return;
+    }
     if (t.dataset.terminal) {
       settings.set({ terminal: t.dataset.terminal });
       ts.toggle('terminal', true);

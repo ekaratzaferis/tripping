@@ -9,6 +9,15 @@ import { icon, toast, emptyState } from '../ui.js';
 import { getWeather, weatherEmoji, NEARBY_KINDS, searchNearby } from '../services.js';
 import { openEvent, openPlace } from './details.js';
 
+// Replace an element's HTML only when it changed. GPS updates arrive every
+// second or so; rebuilding unchanged DOM would swallow taps mid-press.
+function setHtml(el, html) {
+  if (el._html === html) return false;
+  el._html = html;
+  el.innerHTML = html;
+  return true;
+}
+
 export function createLiveView(root, ctx) {
   const { trip, ts } = ctx;
   const tz = trip.timezone;
@@ -160,10 +169,10 @@ export function createLiveView(root, ctx) {
     if (now < trip.start - 6 * 36e5) {
       title = daysToGo <= 0 ? `${esc(trip.title)} today!` : daysToGo === 1 ? `${esc(trip.title)} tomorrow` : `${esc(trip.title)} in ${daysToGo} days`;
       const todo = trip.checklists.find((l) => l.id === 'prebook')?.groups.flatMap((g) => g.items).filter((i) => !ts.checked(i.id) && !i.optional).length || 0;
-      sub = `The live guide starts when you land. ${todo ? `${todo} thing${todo === 1 ? '' : 's'} left to sort out.` : 'Everything booked. 🎉'}`;
+      sub = todo ? `${todo} thing${todo === 1 ? '' : 's'} left to book` : 'Everything booked 🎉';
     } else if (now > trip.end) {
       title = 'Trip complete ✨';
-      sub = 'Your route is saved in Timeline. Use it to place photos your camera didn\'t geotag.';
+      sub = 'Your routes are saved in Timeline';
     } else {
       const cur = s.current;
       title = cur ? esc(cur.title) : s.next ? `Next: ${esc(s.next.title)}` : 'Free time';
@@ -173,30 +182,26 @@ export function createLiveView(root, ctx) {
 
     let heading = '';
     if (s.here) {
-      heading = `<div class="now-here">${cat(s.here.category).emoji} You're at <b>${esc(s.here.name)}</b></div>`;
+      heading = `<div class="now-line here"><span class="grow-line">${cat(s.here.category).emoji} You're at <b>${esc(s.here.name)}</b></span></div>`;
     } else if (s.target && s.nearCity) {
       const eta = travelEstimate(s.targetDist);
-      heading = `<div class="now-target"><span class="dot-live"></span> Heading to <b>${esc(s.target.name)}</b>
-        ${s.targetDist != null ? `<span class="muted">· ${fmtDist(s.targetDist)}${eta ? ` · ~${fmtDuration(eta.mins)} ${eta.mode === 'walk' ? 'walk' : 'ride'}` : ''}</span>` : ''}
-        ${ts.target() ? `<button class="link-btn" data-act="clear-target">clear</button>` : ''}</div>`;
+      const meta = s.targetDist != null ? ` · ${fmtDist(s.targetDist)}${eta ? ` · ${fmtDuration(eta.mins)}` : ''}` : '';
+      heading = `<div class="now-line"><span class="dot-live"></span><span class="grow-line"><b>${esc(s.target.name)}</b><span class="muted">${meta}</span></span>
+        ${ts.target() ? `<button class="link-btn" data-act="clear-target">clear</button>` : ''}
+        ${!s.atTarget ? `<a class="go-link" href="${directionsUrl(s.target)}" target="_blank" rel="noopener">${icon('nav')} Go</a>` : ''}</div>`;
     } else if (!s.pos) {
-      heading = `<div class="now-target muted">${geo.error ? esc(geo.error) : 'Waiting for GPS…'}</div>`;
+      heading = `<div class="now-line muted"><span class="grow-line">${geo.error ? esc(geo.error) : 'Waiting for GPS…'}</span></div>`;
     } else if (!s.nearCity) {
-      heading = `<div class="now-target muted">You're ${fmtDist(distance(s.pos, trip.center))} from ${esc(trip.title)}.</div>`;
+      heading = `<div class="now-line muted"><span class="grow-line">You're ${fmtDist(distance(s.pos, trip.center))} from ${esc(trip.title)}</span></div>`;
     }
 
     const tipCount = (s.tips?.place.tips?.dontMiss?.length || 0) + (s.tips?.place.tips?.goodToKnow?.length || 0);
-    $('#now-card').innerHTML = `
+    setHtml($('#now-card'), `
       <div class="now-top"><span class="eyebrow">${kicker}${sim ? ' <span class="sim">SIM</span>' : ''}</span>${wx}</div>
       <div class="now-title">${title}</div>
       ${sub ? `<div class="now-sub">${sub}</div>` : ''}
-      ${heading}
-      ${(s.tips && tipCount) || (s.target && s.nearCity && !s.atTarget) ? `<div class="now-actions">
-        ${s.tips && tipCount ? `<button class="tips-cta" data-act="tips">${icon('bulb')} ${s.tips.place.tips?.dontMiss?.length ? `${s.tips.place.tips.dontMiss.length} must-sees` : 'Tips'}${s.tips.place.id !== s.target?.id ? ` · ${esc(s.tips.place.name)}` : ''}</button>` : ''}
-        ${s.target && s.nearCity && !s.atTarget ? `<a class="tips-cta alt" href="${directionsUrl(s.target)}" target="_blank" rel="noopener">${icon('nav')} Directions</a>` : ''}
-      </div>` : ''}`;
-    const badge = root.querySelector('.fab-badge');
-    badge.hidden = !(s.tips && tipCount);
+      ${heading}`);
+    root.querySelector('.fab-badge').hidden = !(s.tips && tipCount);
   }
 
   function weatherChip() {
@@ -223,7 +228,7 @@ export function createLiveView(root, ctx) {
   function renderAlerts() {
     const list = state.alerts;
     const shown = alertsExpanded ? list : list.slice(0, 1);
-    $('#alerts').innerHTML = shown.map((a) => `
+    setHtml($('#alerts'), shown.map((a) => `
       <div class="alert lvl-${a.level}" data-key="${esc(a.key)}">
         <div class="alert-icon">${a.icon}</div>
         <div class="alert-main">
@@ -238,7 +243,7 @@ export function createLiveView(root, ctx) {
         </div>
         ${a.snoozable ? `<button class="icon-btn alert-x" data-alert-act="snooze" aria-label="Hide for now">${icon('x')}</button>` : ''}
       </div>`).join('') +
-      (list.length > 1 ? `<button class="alerts-more" data-act="alerts-more">${alertsExpanded ? 'Show less' : `+${list.length - 1} more alert${list.length > 2 ? 's' : ''}`}</button>` : '');
+      (list.length > 1 ? `<button class="alerts-more" data-act="alerts-more">${alertsExpanded ? 'Show less' : `+${list.length - 1} more alert${list.length > 2 ? 's' : ''}`}</button>` : ''));
   }
 
   /* ---------- bottom sheet ---------- */
@@ -250,8 +255,7 @@ export function createLiveView(root, ctx) {
     root.querySelectorAll('#sheet-tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
     const body = $('#sheet-body');
     const scroll = body.scrollTop;
-    body.innerHTML = tab === 'today' ? todayHtml() : tab === 'nearby' ? nearbyHtml() : checkinHtml();
-    body.scrollTop = scroll;
+    if (setHtml(body, tab === 'today' ? todayHtml() : tab === 'nearby' ? nearbyHtml() : checkinHtml())) body.scrollTop = scroll;
   }
 
   function todayHtml() {
@@ -284,10 +288,13 @@ export function createLiveView(root, ctx) {
     const chips = NEARBY_KINDS.map((k) => `<button class="chip-btn ${nearby.kind === k.id ? 'on' : ''}" data-nearby="${k.id}">${k.emoji} ${k.label}</button>`).join('');
     let list;
     if (nearby.kind) {
-      if (nearby.loading) list = `<div class="loading">Searching OpenStreetMap…</div>`;
+      if (nearby.loading && !nearby.results) list = `<div class="loading">Searching OpenStreetMap…</div>`;
       else if (nearby.error) list = `<div class="callout">Couldn't search right now (${esc(nearby.error)}). Are you offline?</div>`;
       else if (!nearby.results?.length) list = emptyState('🤷', 'Nothing close by', 'Try another category or walk a bit.');
-      else list = nearby.results.map((r) => `
+      else list = nearby.results
+        .map((r) => ({ ...r, dist: s.pos && s.nearCity ? distance(s.pos, r) : r.dist }))
+        .sort((a, b) => a.dist - b.dist)
+        .map((r) => `
         <div class="near-row">
           <span class="place-emoji">${r.emoji}</span>
           <span class="grow"><b>${esc(r.name)}</b><small>${fmtDist(r.dist)}${r.cuisine ? ` · ${esc(r.cuisine)}` : ''}${r.hours ? ` · ${esc(r.hours)}` : ''}</small></span>
@@ -376,28 +383,32 @@ export function createLiveView(root, ctx) {
     const pill = $('#rec-pill');
     const on = s.tracking && geo.watching && !s.simLocation;
     pill.className = `rec-pill ${on ? 'on' : ''}`;
-    pill.innerHTML = on
+    setHtml(pill, on
       ? `<span class="rec-dot"></span> Recording route · ${todayTrack.length} pts today`
-      : s.simLocation ? '🧪 Simulated location' : `${icon('rec')} Route recording off`;
+      : s.simLocation ? '🧪 Simulated location' : `${icon('rec')} Route recording off`);
   }
   function updateLocateBtn() {
     root.querySelector('[data-act="locate"]').classList.toggle('on', follow);
     root.querySelector('[data-act="layers"]').classList.toggle('on', !!settings.get().showAllPlaces);
   }
 
-  async function runNearby(kind) {
-    nearby = { kind, results: null, loading: !!kind, error: null };
-    renderSheet();
-    renderMap();
-    if (!kind) return;
+  // `auto` = silent refresh after walking a while: keep old results on screen, don't move the map.
+  let nearbyRun = 0;
+  async function runNearby(kind, { auto = false } = {}) {
+    const run = ++nearbyRun;
     const origin = state.pos && state.nearCity ? state.pos : trip.center;
+    nearby = auto ? { ...nearby, loading: true } : { kind, results: null, loading: !!kind, error: null, origin };
+    if (!auto) { renderSheet(); renderMap(); }
+    if (!kind) return;
     try {
-      nearby.results = await searchNearby(kind, origin);
-      if (map && nearby.results.length) map.fit([origin, ...nearby.results.slice(0, 8)], mapPad());
+      const results = await searchNearby(kind, origin);
+      if (run !== nearbyRun) return; // user switched category meanwhile
+      nearby = { kind, results, loading: false, error: null, origin };
+      if (!auto && map && results.length) map.fit([origin, ...results.slice(0, 8)], mapPad());
     } catch (e) {
-      nearby.error = e.message;
+      if (run !== nearbyRun) return;
+      nearby = auto ? { ...nearby, loading: false, origin } : { ...nearby, loading: false, error: e.message };
     }
-    nearby.loading = false;
     renderSheet();
     renderMap();
   }
@@ -477,6 +488,9 @@ export function createLiveView(root, ctx) {
     },
     update(s) {
       state = s;
+      if (nearby.kind && !nearby.loading && nearby.origin && s.pos && s.nearCity && distance(s.pos, nearby.origin) > 300) {
+        runNearby(nearby.kind, { auto: true });
+      }
       renderNow();
       renderAlerts();
       renderSheet();

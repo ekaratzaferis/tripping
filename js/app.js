@@ -6,6 +6,7 @@ import { geo } from './geo.js';
 import { computeState, recordVisits } from './engine.js';
 import { bus, $, $$, esc, cat } from './util.js';
 import { icon, toast } from './ui.js';
+import { restyleMaps } from './map.js';
 import { createLiveView } from './views/live.js';
 import { createPlanView } from './views/plan.js';
 import { createListsView } from './views/lists.js';
@@ -159,6 +160,7 @@ async function main() {
   bus.on('settings', (patch) => {
     schedule();
     if ('wakeLock' in patch) syncWakeLock();
+    if ('theme' in patch) { applyTheme(patch.theme); restyleMaps(); }
     if (current === 'settings' && !('cameraOffsetMin' in patch)) views.settings.show();
   });
   bus.on('track', () => { views.live.onTrack(); views.timeline.onTrack(); });
@@ -166,6 +168,15 @@ async function main() {
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') { schedule(); syncWakeLock(); }
   });
+
+  /* ---------- theme (auto / light / dark) ---------- */
+  function applyTheme(t) {
+    const root = document.documentElement;
+    if (t === 'light' || t === 'dark') root.dataset.theme = t;
+    else delete root.dataset.theme;
+    const metas = document.querySelectorAll('meta[name="theme-color"]');
+    metas.forEach((m, i) => { m.content = t === 'dark' ? '#0E0F12' : t === 'light' ? '#FFFFFF' : i === 0 ? '#FFFFFF' : '#0E0F12'; });
+  }
 
   /* ---------- screen wake lock ---------- */
   let lock = null;
