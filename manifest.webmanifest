@@ -1,0 +1,12 @@
+{
+  "name": "Triparw — live trip guide",
+  "short_name": "Triparw",
+  "start_url": "./#/live",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
