@@ -1,11 +1,11 @@
 // Live view: full-screen map with me + where I'm heading, a "now" card,
 // alerts, a tips button, and a bottom sheet with Today / Nearby / Check-in.
-import { createMap, pinHtml, dotHtml } from '../map.js';
+import { createMap, pinHtml, dotHtml, homeHtml } from '../map.js';
 import { resolvePlace, eventPlaces, hasCoords, eventTime } from '../trip.js';
 import { settings, track } from '../store.js';
 import { geo } from '../geo.js';
 import { esc, cat, fmtTime, fmtDate, fmtDist, distance, relTime, travelEstimate, fmtDuration, directionsUrl, dayKey, zonedToDate, debounce } from '../util.js';
-import { icon, toast, emptyState } from '../ui.js';
+import { icon, toast, emptyState, modal } from '../ui.js';
 import { getWeather, weatherEmoji, NEARBY_KINDS, searchNearby } from '../services.js';
 import { openEvent, openPlace } from './details.js';
 
@@ -85,7 +85,9 @@ export function createLiveView(root, ctx) {
       if (t) map.fit([pos, t], mapPad());
       else map.panTo(pos, 16);
     } else if (force) {
-      const pts = state.todayEvents.flatMap((e) => eventPlaces(trip, e)).filter(hasCoords);
+      // Overview of today in the city: leave out far-away places (e.g. Athens airport).
+      const pts = [...state.todayEvents.flatMap((e) => eventPlaces(trip, e)), resolvePlace(trip, 'hotel')]
+        .filter((p) => hasCoords(p) && distance(p, trip.center) < 40000);
       map.fit(pts.length ? pts : [trip.center], mapPad());
     }
     initialFitDone = true;
@@ -102,7 +104,7 @@ export function createLiveView(root, ctx) {
     state.todayEvents.forEach((e, i) => {
       const status = ts.status(e.id);
       for (const p of eventPlaces(trip, e)) {
-        if (!hasCoords(p) || shown.has(p.id)) continue;
+        if (!hasCoords(p) || shown.has(p.id) || p.id === 'hotel') continue;
         shown.add(p.id);
         const isStop = e.stops?.includes(p.id) && e.place !== p.id;
         const visited = visits[p.id] && visits[p.id].last >= e.startD - 18e5;
@@ -114,16 +116,17 @@ export function createLiveView(root, ctx) {
       }
     });
     const target = state.target;
-    if (target && !shown.has(target.id)) {
+    if (target && !shown.has(target.id) && target.id !== 'hotel') {
       shown.add(target.id);
       markers.push({ ...target, z: 500, title: target.name, html: pinHtml({ category: target.category, active: true }), onClick: () => openPlace(ctx, target, { reason: state.targetReason }) });
     }
-    const hotel = resolvePlace(trip, 'hotel');
-    if (hasCoords(hotel) && !shown.has('hotel')) {
-      shown.add('hotel');
-      markers.push({ ...hotel, z: 40, title: hotel.name, html: pinHtml({ category: 'hotel', small: true }), onClick: () => openPlace(ctx, hotel) });
-    }
     map.setMarkers('plan', markers);
+    const hotel = resolvePlace(trip, 'hotel');
+    shown.add('hotel');
+    map.setMarkers('home', hasCoords(hotel) ? [{
+      ...hotel, z: targetId === 'hotel' ? 600 : 300, title: hotel.name,
+      html: homeHtml(hotel.name, targetId === 'hotel'), onClick: () => openPlace(ctx, hotel),
+    }] : []);
 
     const all = s.showAllPlaces
       ? Object.entries(trip.places).filter(([id]) => !shown.has(id)).map(([id, p]) => ({
@@ -190,7 +193,7 @@ export function createLiveView(root, ctx) {
         ${ts.target() ? `<button class="link-btn" data-act="clear-target">clear</button>` : ''}
         ${!s.atTarget ? `<a class="go-link" href="${directionsUrl(s.target)}" target="_blank" rel="noopener">${icon('nav')} Go</a>` : ''}</div>`;
     } else if (!s.pos) {
-      heading = `<div class="now-line muted"><span class="grow-line">${geo.error ? esc(geo.error) : 'Waiting for GPS…'}</span></div>`;
+      heading = `<div class="now-line muted"><span class="grow-line">${geo.error ? esc(geo.error) : 'Waiting for GPS…'}</span>${geo.denied ? '<button class="link-btn" data-act="loc-help">How to fix</button>' : ''}</div>`;
     } else if (!s.nearCity) {
       heading = `<div class="now-line muted"><span class="grow-line">You're ${fmtDist(distance(s.pos, trip.center))} from ${esc(trip.title)}</span></div>`;
     }
@@ -392,6 +395,35 @@ export function createLiveView(root, ctx) {
     root.querySelector('[data-act="layers"]').classList.toggle('on', !!settings.get().showAllPlaces);
   }
 
+  async function locateOrHelp() {
+    const st = await navigator.permissions?.query({ name: 'geolocation' }).catch(() => null);
+    if (st?.state === 'denied' || (!st && geo.denied)) return showLocationHelp();
+    geo.start();
+    toast('Finding you…');
+  }
+
+  function showLocationHelp() {
+    const ua = navigator.userAgent;
+    const ios = /iPhone|iPad|iPod/.test(ua);
+    const android = /Android/.test(ua);
+    const steps = ios
+      ? ['Open the iPhone <b>Settings</b> app → <b>Chrome</b> (or <b>Safari</b>) → <b>Location</b> → <b>While Using the App</b>, and turn on <b>Precise Location</b>.',
+        'Check <b>Settings → Privacy &amp; Security → Location Services</b> is on.',
+        'Come back and reload this page, then tap <b>Allow</b>.']
+      : android
+        ? ['Tap the <b>icon left of the web address</b> (lock or sliders) → <b>Permissions</b> → <b>Location</b> → <b>Allow</b>.',
+          'Still blocked? Phone <b>Settings → Apps → Chrome → Permissions → Location</b> → <b>Allow only while using the app</b>.',
+          'Make sure the phone\'s <b>Location</b> is switched on (quick settings).']
+        : ['Click the <b>icon left of the web address</b> → <b>Site settings</b> → <b>Location</b> → <b>Allow</b>.',
+          'Reload the page.'];
+    modal(`
+      <div class="sheet-head" style="--accent:#004D98"><div class="sheet-emoji">📍</div>
+        <div><div class="eyebrow">Location is blocked</div><h2>Let the guide see where you are</h2>
+        <div class="muted small">The browser won't ask again once it's been blocked, so it has to be allowed by hand.</div></div></div>
+      <ol class="tips-list must">${steps.map((x) => `<li>${x}</li>`).join('')}</ol>
+      <div class="btn-row"><button class="btn primary" data-close>Got it</button></div>`);
+  }
+
   // `auto` = silent refresh after walking a while: keep old results on screen, don't move the map.
   let nearbyRun = 0;
   async function runNearby(kind, { auto = false } = {}) {
@@ -459,7 +491,11 @@ export function createLiveView(root, ctx) {
       case 'locate':
         follow = true;
         updateLocateBtn();
-        if (!state.pos) { geo.start(); toast(geo.error || 'Finding you…'); } else fitSmart(true);
+        if (state.pos) { fitSmart(true); break; }
+        locateOrHelp();
+        break;
+      case 'loc-help':
+        showLocationHelp();
         break;
       case 'rec':
         settings.set({ tracking: !settings.get().tracking });

@@ -13,6 +13,7 @@ let lastRecorded = null;
 export const geo = {
   real: null,
   error: null,
+  denied: false,
   get pos() {
     const sim = settings.get().simLocation;
     if (sim) return { ...sim, acc: 8, sim: true, t: Date.now() };
@@ -43,6 +44,7 @@ export const geo = {
 async function onPos(p) {
   const c = p.coords;
   geo.error = null;
+  geo.denied = false;
   geo.real = {
     lat: c.latitude,
     lng: c.longitude,
@@ -56,9 +58,24 @@ async function onPos(p) {
 }
 
 function onErr(e) {
-  geo.error = e.code === 1 ? 'Location permission denied.' : e.message || 'Location unavailable.';
+  geo.denied = e.code === 1;
+  geo.error = geo.denied ? 'Location is blocked for this site.' : e.message || 'Location unavailable.';
+  // Drop the dead watch so the next start() really asks again.
+  if (geo.denied) geo.stop();
   bus.emit('position', geo.pos);
 }
+
+// If the user allows location in browser settings while the app is open,
+// pick it up straight away instead of waiting for a reload.
+navigator.permissions?.query({ name: 'geolocation' }).then((status) => {
+  status.onchange = () => {
+    if (status.state !== 'denied') {
+      geo.denied = false;
+      geo.error = null;
+      geo.start();
+    }
+  };
+}).catch(() => {});
 
 async function maybeRecord(p) {
   if (p.acc > MAX_ACCURACY) return;

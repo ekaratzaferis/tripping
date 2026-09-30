@@ -1,7 +1,7 @@
 // Timeline: replay each day's recorded route, scrub through time, and find
 // where you were when a photo was taken (from EXIF time or a typed time).
 // Export GPX so photo tools (Lightroom, exiftool…) can geotag in bulk.
-import { createMap, pinHtml, dotHtml } from '../map.js';
+import { createMap, pinHtml, dotHtml, homeHtml } from '../map.js';
 import { settings, track } from '../store.js';
 import { resolvePlace, hasCoords } from '../trip.js';
 import { esc, cat, distance, fmtDist, fmtTime, fmtDate, dayKey, zonedToDate, toLocalInput, fromLocalInput, download, directionsUrl, fmtDuration } from '../util.js';
@@ -151,12 +151,14 @@ export function createTimelineView(root, ctx) {
     for (const e of tripDay?.events || []) {
       for (const id of [e.place, ...(e.stops || [])].filter(Boolean)) {
         const p = resolvePlace(trip, id);
-        if (!hasCoords(p) || seen.has(p.id)) continue;
+        if (!hasCoords(p) || seen.has(p.id) || p.id === 'hotel') continue;
         seen.add(p.id);
         markers.push({ ...p, z: 5, title: p.name, html: pinHtml({ category: p.category, small: true }) });
       }
     }
     map.setMarkers('places', markers);
+    const hotel = resolvePlace(trip, 'hotel');
+    map.setMarkers('home', hasCoords(hotel) ? [{ ...hotel, z: 15, title: hotel.name, html: homeHtml(hotel.name) }] : []);
 
     const [from, to] = dayRange(day);
     map.setMarkers('photos', photos.filter((ph) => ph.pos && ph.t >= from && ph.t <= to).map((ph) => ({

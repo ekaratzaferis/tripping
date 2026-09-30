@@ -408,6 +408,17 @@ body[data-picking] #view-live::after {
   position: absolute; left: 50%; bottom: -16px; width: 34px; height: 12px; margin-left: -17px;
   border-radius: 50%; background: var(--pin); opacity: .45; animation: pinpulse 1.8s infinite; z-index: -1;
 }
+.mk-home { transform: translate(-50%, -21px); display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.mk-home-badge {
+  width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; font-size: 22px;
+  background: #111114; border: 3px solid #FCDD09; box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+.mk-home-label {
+  font: 800 11px var(--font); color: #111114; background: #FCDD09; padding: 2px 8px; border-radius: 999px;
+  white-space: nowrap; box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+.mk-home.is-active .mk-home-badge { animation: bob 2s ease-in-out infinite; border-color: #DA121A; }
+
 .mk-dot {
   transform: translate(-50%, -50%); min-width: 28px; height: 28px; padding: 0 5px; border-radius: 14px;
   background: var(--surface); border: 2.5px solid var(--dot); color: var(--dot);

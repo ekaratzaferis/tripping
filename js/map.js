@@ -90,6 +90,10 @@ export function pinHtml({ category, label, active, done, small, emoji }) {
     ${active ? '<div class="mk-pin-pulse"></div>' : ''}
   </div>`;
 }
+// The hotel: a "home base" badge that reads differently from sight pins.
+export function homeHtml(label, active) {
+  return `<div class="mk-home ${active ? 'is-active' : ''}"><div class="mk-home-badge">🏨</div>${label ? `<div class="mk-home-label">${esc(label)}</div>` : ''}</div>`;
+}
 export function dotHtml(color, text = '') {
   return `<div class="mk-dot" style="--dot:${color}">${esc(text)}</div>`;
 }
