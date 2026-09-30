@@ -1,7 +1,7 @@
 // Live view: full-screen map with me + where I'm heading, a "now" card,
 // alerts, a tips button, and a bottom sheet with Today / Nearby / Check-in.
 import { createMap, pinHtml, dotHtml } from '../map.js';
-import { resolvePlace, eventPlaces, hasCoords } from '../trip.js';
+import { resolvePlace, eventPlaces, hasCoords, eventTime } from '../trip.js';
 import { settings, track } from '../store.js';
 import { geo } from '../geo.js';
 import { esc, cat, fmtTime, fmtDate, fmtDist, distance, relTime, travelEstimate, fmtDuration, directionsUrl, dayKey, zonedToDate, debounce } from '../util.js';
@@ -177,7 +177,7 @@ export function createLiveView(root, ctx) {
       const cur = s.current;
       title = cur ? esc(cur.title) : s.next ? `Next: ${esc(s.next.title)}` : 'Free time';
       if (cur && s.next) sub = `Then <b>${esc(s.next.title)}</b> ${relTime(s.next.startD - now)}`;
-      else if (!cur && s.next) sub = `${fmtTime(s.next.startD, tz)} · ${relTime(s.next.startD - now)}`;
+      else if (!cur && s.next) sub = `${eventTime(trip, s.next)} · ${relTime(s.next.startD - now)}`;
     }
 
     let heading = '';

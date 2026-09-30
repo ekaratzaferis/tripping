@@ -44,6 +44,7 @@ export function openPlace(ctx, placeOrId, { reason } = {}) {
     <div class="btn-row">
       ${hasCoords(place) ? `<button class="btn primary" data-act="target">${icon('nav')} ${isTarget ? 'Stop guiding' : 'Guide me here'}</button>
       <a class="btn" href="${directionsUrl(place)}" target="_blank" rel="noopener">${icon('external')} Google Maps</a>` : ''}
+      ${place.phone ? `<a class="btn ghost" href="tel:${esc(place.phone.replace(/\s+/g, ''))}">${icon('phone')} Call</a>` : ''}
       ${place.url ? `<a class="btn ghost" href="${esc(place.url)}" target="_blank" rel="noopener">${icon('info')} Website</a>` : ''}
     </div>`, {
     cls: 'place-sheet',

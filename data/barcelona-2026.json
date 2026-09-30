@@ -5,37 +5,78 @@
   "subtitle": "One or two must-sees a day. The rest is yours to wander.",
   "timezone": "Europe/Madrid",
   "locale": "en-GB",
-  "center": { "lat": 41.3874, "lng": 2.1686 },
-  "dates": { "start": "2026-10-09", "end": "2026-10-12" },
+  "center": {
+    "lat": 41.3874,
+    "lng": 2.1686
+  },
+  "dates": {
+    "start": "2026-10-09",
+    "end": "2026-10-12"
+  },
   "facts": [
-    "Arrive Friday ~midday",
-    "Fly out Monday ~18:00",
+    "Fly in Fri 13:45 · Vueling VY8101 · T1",
+    "Fly out Mon 18:10 · Aegean A3743 · T1",
+    "Hotel: Zenit Barcelona, Sant Gervasi",
     "Monday 12 Oct is a public holiday",
     "Prices checked late Sept 2026 — confirm on official sites before booking"
   ],
-  "terminals": { "T1": "airport-t1", "T2": "airport-t2" },
-
+  "terminals": {
+    "T1": "airport-t1",
+    "T2": "airport-t2"
+  },
   "places": {
     "airport-t1": {
-      "name": "Airport · Terminal 1", "category": "airport", "lat": 41.2889, "lng": 2.0731, "radius": 400,
-      "tips": { "goodToKnow": ["Aerobús A1 serves T1.", "Allow ~35 min from Plaça Catalunya."] }
+      "name": "Barcelona Airport · Terminal 1",
+      "category": "airport",
+      "lat": 41.2889,
+      "lng": 2.0731,
+      "radius": 400,
+      "tips": {
+        "goodToKnow": [
+          "Both your flights use T1: Vueling in, Aegean out.",
+          "Arriving: Aerobús A1 leaves from right outside arrivals, every ~5–10 min, ~35 min to Plaça Catalunya.",
+          "Leaving: allow ~2 h before your 18:10 flight. Aegean Light fare = no checked bag, so go straight to security if you've checked in online.",
+          "Taxi to or from the hotel (Sant Gervasi): ~25–35 min, roughly €35–45."
+        ]
+      }
     },
     "airport-t2": {
-      "name": "Airport · Terminal 2", "category": "airport", "lat": 41.3036, "lng": 2.0775, "radius": 400,
-      "tips": { "goodToKnow": ["Aerobús A2 serves T2.", "Allow ~35 min from Plaça Catalunya."] }
+      "name": "Airport · Terminal 2",
+      "category": "airport",
+      "lat": 41.3036,
+      "lng": 2.0775,
+      "radius": 400,
+      "tips": {
+        "goodToKnow": [
+          "Aerobús A2 serves T2.",
+          "Allow ~35 min from Plaça Catalunya."
+        ]
+      }
     },
     "pl-catalunya": {
-      "name": "Plaça de Catalunya (Aerobús)", "category": "transport", "lat": 41.3870, "lng": 2.1701, "radius": 120,
+      "name": "Plaça de Catalunya (Aerobús + FGC)",
+      "category": "transport",
+      "lat": 41.387,
+      "lng": 2.1701,
+      "radius": 120,
       "url": "https://aerobusbarcelona.es",
-      "tips": { "goodToKnow": [
-        "A1 = Terminal 1, A2 = Terminal 2 — double-check the letter on the bus.",
-        "The airport-bound stop is not the same as the arrival drop-off; check aerobusbarcelona.es for the exact spot.",
-        "The T-casual card is NOT valid on the Aerobús."
-      ] }
+      "tips": {
+        "goodToKnow": [
+          "Aerobús A1 ends and starts here. A1 is the Terminal 1 bus, which is what you need both ways.",
+          "The airport-bound stop isn't the same as the arrival drop-off. Check aerobusbarcelona.es for the exact spot.",
+          "FGC Catalunya station is on the square: take L6, S1 or S2 to Muntaner for the hotel (not L7, it doesn't stop there).",
+          "The T-casual card works on FGC and metro, but NOT on the Aerobús."
+        ]
+      }
     },
     "picasso": {
-      "name": "Museu Picasso", "category": "museum", "lat": 41.3852, "lng": 2.1809, "radius": 90,
-      "address": "Carrer de Montcada, 15-23, El Born", "url": "https://museupicassobcn.cat",
+      "name": "Museu Picasso",
+      "category": "museum",
+      "lat": 41.3852,
+      "lng": 2.1809,
+      "radius": 90,
+      "address": "Carrer de Montcada, 15-23, El Born",
+      "url": "https://museupicassobcn.cat",
       "tips": {
         "dontMiss": [
           "Las Meninas series (1957): 58 variations on Velázquez. This is the one to see.",
@@ -53,33 +94,80 @@
       }
     },
     "palau-musica": {
-      "name": "Palau de la Música Catalana", "category": "landmark", "lat": 41.3876, "lng": 2.1753, "radius": 60,
-      "tips": { "dontMiss": ["The corner façade with its mosaic columns and sculpture group.", "Peek into the foyer café if it's open."] }
+      "name": "Palau de la Música Catalana",
+      "category": "landmark",
+      "lat": 41.3876,
+      "lng": 2.1753,
+      "radius": 60,
+      "tips": {
+        "dontMiss": [
+          "The corner façade with its mosaic columns and sculpture group.",
+          "Peek into the foyer café if it's open."
+        ]
+      }
     },
     "santa-maria-mar": {
-      "name": "Santa Maria del Mar", "category": "church", "lat": 41.3837, "lng": 2.1821, "radius": 60,
+      "name": "Santa Maria del Mar",
+      "category": "church",
+      "lat": 41.3837,
+      "lng": 2.1821,
+      "radius": 60,
       "tips": {
-        "dontMiss": ["The huge, spare Catalan Gothic nave, with very slim columns for its size.", "The rose window at dusk."],
-        "goodToKnow": ["Free to enter outside tour hours; rooftop tours are paid."]
+        "dontMiss": [
+          "The huge, spare Catalan Gothic nave, with very slim columns for its size.",
+          "The rose window at dusk."
+        ],
+        "goodToKnow": [
+          "Free to enter outside tour hours; rooftop tours are paid."
+        ]
       }
     },
     "passeig-born": {
-      "name": "Passeig del Born", "category": "street", "lat": 41.3848, "lng": 2.1830, "radius": 80,
-      "tips": { "dontMiss": ["El Born Centre de Cultura: free to walk in and see the excavated 1714 streets."] }
+      "name": "Passeig del Born",
+      "category": "street",
+      "lat": 41.3848,
+      "lng": 2.183,
+      "radius": 80,
+      "tips": {
+        "dontMiss": [
+          "El Born Centre de Cultura: free to walk in and see the excavated 1714 streets."
+        ]
+      }
     },
     "el-born": {
-      "name": "El Born", "category": "neighbourhood", "lat": 41.3853, "lng": 2.1823, "radius": 250,
-      "tips": { "goodToKnow": ["Small tapas and wine bars everywhere. Dinner from 21:00, like the locals.", "One of the best neighbourhoods for just getting lost."] }
+      "name": "El Born",
+      "category": "neighbourhood",
+      "lat": 41.3853,
+      "lng": 2.1823,
+      "radius": 250,
+      "tips": {
+        "goodToKnow": [
+          "Small tapas and wine bars everywhere. Dinner from 21:00, like the locals.",
+          "One of the best neighbourhoods for just getting lost."
+        ]
+      }
     },
     "barceloneta": {
-      "name": "Barceloneta beach", "category": "beach", "lat": 41.3785, "lng": 2.1925, "radius": 200,
+      "name": "Barceloneta beach",
+      "category": "beach",
+      "lat": 41.3785,
+      "lng": 2.1925,
+      "radius": 200,
       "tips": {
-        "dontMiss": ["Sunset is ~19:15. The beach faces east, so you'll watch the colours over the sea rather than the sun going down."],
-        "goodToKnow": ["Pickpockets: front pocket or zipped bag, and never leave your phone on the towel or table."]
+        "dontMiss": [
+          "Sunset is ~19:15. The beach faces east, so you'll watch the colours over the sea rather than the sun going down."
+        ],
+        "goodToKnow": [
+          "Pickpockets: front pocket or zipped bag, and never leave your phone on the towel or table."
+        ]
       }
     },
     "park-guell": {
-      "name": "Park Güell", "category": "park", "lat": 41.4135, "lng": 2.1530, "radius": 220,
+      "name": "Park Güell",
+      "category": "park",
+      "lat": 41.4135,
+      "lng": 2.153,
+      "radius": 220,
       "url": "https://parkguell.barcelona",
       "tips": {
         "dontMiss": [
@@ -97,25 +185,64 @@
       }
     },
     "placa-virreina": {
-      "name": "Plaça de la Virreina", "category": "square", "lat": 41.4040, "lng": 2.1583, "radius": 60,
-      "tips": { "dontMiss": ["Coffee on a terrace facing the church of Sant Joan."] }
+      "name": "Plaça de la Virreina",
+      "category": "square",
+      "lat": 41.404,
+      "lng": 2.1583,
+      "radius": 60,
+      "tips": {
+        "dontMiss": [
+          "Coffee on a terrace facing the church of Sant Joan."
+        ]
+      }
     },
     "carrer-verdi": {
-      "name": "Carrer de Verdi", "category": "street", "lat": 41.4043, "lng": 2.1566, "radius": 120,
-      "tips": { "dontMiss": ["Independent shops, vintage and cafés. Cines Verdi shows films in original version."] }
+      "name": "Carrer de Verdi",
+      "category": "street",
+      "lat": 41.4043,
+      "lng": 2.1566,
+      "radius": 120,
+      "tips": {
+        "dontMiss": [
+          "Independent shops, vintage and cafés. Cines Verdi shows films in original version."
+        ]
+      }
     },
     "placa-sol": {
-      "name": "Plaça del Sol", "category": "square", "lat": 41.4004, "lng": 2.1571, "radius": 70,
-      "tips": { "goodToKnow": ["Lively on a Saturday night; lots of small bars around the square."] }
+      "name": "Plaça del Sol",
+      "category": "square",
+      "lat": 41.4004,
+      "lng": 2.1571,
+      "radius": 70,
+      "tips": {
+        "goodToKnow": [
+          "Lively on a Saturday night; lots of small bars around the square."
+        ]
+      }
     },
     "casa-vicens": {
-      "name": "Casa Vicens", "category": "landmark", "lat": 41.4035, "lng": 2.1508, "radius": 50,
-      "tips": { "dontMiss": ["Gaudí's first house: tiled façade with marigolds, very different from his later work."] }
+      "name": "Casa Vicens",
+      "category": "landmark",
+      "lat": 41.4035,
+      "lng": 2.1508,
+      "radius": 50,
+      "tips": {
+        "dontMiss": [
+          "Gaudí's first house: tiled façade with marigolds, very different from his later work."
+        ]
+      }
     },
     "bunkers": {
-      "name": "Bunkers del Carmel", "category": "viewpoint", "lat": 41.4190, "lng": 2.1619, "radius": 140,
+      "name": "Bunkers del Carmel",
+      "category": "viewpoint",
+      "lat": 41.419,
+      "lng": 2.1619,
+      "radius": 140,
       "tips": {
-        "dontMiss": ["A 360° view of the whole city as the lights come on.", "The Sagrada Família and the sea lined up in one view."],
+        "dontMiss": [
+          "A 360° view of the whole city as the lights come on.",
+          "The Sagrada Família and the sea lined up in one view."
+        ],
         "goodToKnow": [
           "Civil War anti-aircraft battery; now a free hilltop.",
           "Get there 30–45 min before sunset for a good spot.",
@@ -125,7 +252,11 @@
       }
     },
     "sagrada": {
-      "name": "Sagrada Família", "category": "church", "lat": 41.4036, "lng": 2.1744, "radius": 130,
+      "name": "Sagrada Família",
+      "category": "church",
+      "lat": 41.4036,
+      "lng": 2.1744,
+      "radius": 130,
       "url": "https://sagradafamilia.org",
       "tips": {
         "dontMiss": [
@@ -142,7 +273,11 @@
       }
     },
     "casa-batllo": {
-      "name": "Casa Batlló", "category": "landmark", "lat": 41.3917, "lng": 2.1649, "radius": 60,
+      "name": "Casa Batlló",
+      "category": "landmark",
+      "lat": 41.3917,
+      "lng": 2.1649,
+      "radius": 60,
       "url": "https://casabatllo.es",
       "tips": {
         "dontMiss": [
@@ -152,40 +287,91 @@
           "The light well, where the tiles go from deep to pale blue so the light spreads evenly.",
           "The rooftop chimneys (Silver ticket and up)."
         ],
-        "goodToKnow": ["Next door: Casa Amatller and Casa Lleó Morera, the 'Block of Discord' with three modernista architects in one block."]
+        "goodToKnow": [
+          "Next door: Casa Amatller and Casa Lleó Morera, the 'Block of Discord' with three modernista architects in one block."
+        ]
       }
     },
     "la-pedrera": {
-      "name": "La Pedrera (Casa Milà)", "category": "landmark", "lat": 41.3953, "lng": 2.1619, "radius": 60,
-      "tips": { "dontMiss": ["The rippling stone façade and wrought-iron balconies from the opposite pavement.", "The 'warrior' chimneys on the roof, if you go in."] }
+      "name": "La Pedrera (Casa Milà)",
+      "category": "landmark",
+      "lat": 41.3953,
+      "lng": 2.1619,
+      "radius": 60,
+      "tips": {
+        "dontMiss": [
+          "The rippling stone façade and wrought-iron balconies from the opposite pavement.",
+          "The 'warrior' chimneys on the roof, if you go in."
+        ]
+      }
     },
     "sant-antoni": {
-      "name": "Mercat de Sant Antoni", "category": "market", "lat": 41.3787, "lng": 2.1618, "radius": 120,
+      "name": "Mercat de Sant Antoni",
+      "category": "market",
+      "lat": 41.3787,
+      "lng": 2.1618,
+      "radius": 120,
       "tips": {
-        "dontMiss": ["The Sunday morning book & collectibles market around the building (Dominical).", "Vermut in a traditional bodega on the surrounding streets."],
-        "goodToKnow": ["Vermut hour is late morning / pre-lunch, with olives and chips."]
+        "dontMiss": [
+          "The Sunday morning book & collectibles market around the building (Dominical).",
+          "Vermut in a traditional bodega on the surrounding streets."
+        ],
+        "goodToKnow": [
+          "Vermut hour is late morning / pre-lunch, with olives and chips."
+        ]
       }
     },
     "parc-ciutadella": {
-      "name": "Parc de la Ciutadella", "category": "park", "lat": 41.3881, "lng": 2.1869, "radius": 250,
-      "tips": { "dontMiss": ["The Cascada fountain.", "Rowing boats on the lake.", "Arc de Triomf at the top of Passeig de Lluís Companys."] }
+      "name": "Parc de la Ciutadella",
+      "category": "park",
+      "lat": 41.3881,
+      "lng": 2.1869,
+      "radius": 250,
+      "tips": {
+        "dontMiss": [
+          "The Cascada fountain.",
+          "Rowing boats on the lake.",
+          "Arc de Triomf at the top of Passeig de Lluís Companys."
+        ]
+      }
     },
     "mnac": {
-      "name": "MNAC steps, Montjuïc", "category": "viewpoint", "lat": 41.3685, "lng": 2.1534, "radius": 140,
+      "name": "MNAC steps, Montjuïc",
+      "category": "viewpoint",
+      "lat": 41.3685,
+      "lng": 2.1534,
+      "radius": 140,
       "tips": {
-        "dontMiss": ["Sunset from the terrace in front of the MNAC, looking down Avinguda Maria Cristina.", "The Magic Fountain below. The schedule varies, so check before you go."],
-        "goodToKnow": ["Montjuïc gets cool after sunset, so bring your light layer."]
+        "dontMiss": [
+          "Sunset from the terrace in front of the MNAC, looking down Avinguda Maria Cristina.",
+          "The Magic Fountain below. The schedule varies, so check before you go."
+        ],
+        "goodToKnow": [
+          "Montjuïc gets cool after sunset, so bring your light layer."
+        ]
       }
     },
     "carrer-blai": {
-      "name": "Carrer de Blai, Poble Sec", "category": "food", "lat": 41.3727, "lng": 2.1629, "radius": 160,
+      "name": "Carrer de Blai, Poble Sec",
+      "category": "food",
+      "lat": 41.3727,
+      "lng": 2.1629,
+      "radius": 160,
       "tips": {
-        "dontMiss": ["A pintxos crawl, bar to bar."],
-        "goodToKnow": ["Pintxos cost ~€1–2.50 each. Keep your toothpicks, because that's how they count the bill."]
+        "dontMiss": [
+          "A pintxos crawl, bar to bar."
+        ],
+        "goodToKnow": [
+          "Pintxos cost ~€1–2.50 each. Keep your toothpicks, because that's how they count the bill."
+        ]
       }
     },
     "la-rambla": {
-      "name": "La Rambla", "category": "street", "lat": 41.3810, "lng": 2.1733, "radius": 200,
+      "name": "La Rambla",
+      "category": "street",
+      "lat": 41.381,
+      "lng": 2.1733,
+      "radius": 200,
       "tips": {
         "goodToKnow": [
           "Pickpocket hotspot: front pocket or zipped bag.",
@@ -194,202 +380,797 @@
         ]
       }
     },
-    "boqueria": { "name": "Mercat de la Boqueria", "category": "market", "lat": 41.3818, "lng": 2.1717, "radius": 70 },
-    "cathedral": { "name": "Barcelona Cathedral", "category": "church", "lat": 41.3840, "lng": 2.1762, "radius": 70,
-      "tips": { "dontMiss": ["The cloister with its 13 white geese."] } },
-    "placa-reial": { "name": "Plaça Reial", "category": "square", "lat": 41.3801, "lng": 2.1754, "radius": 60,
-      "tips": { "dontMiss": ["The lampposts, early Gaudí designs."] } },
-    "santa-caterina": { "name": "Mercat de Santa Caterina", "category": "market", "lat": 41.3862, "lng": 2.1782, "radius": 60,
-      "tips": { "dontMiss": ["The wavy, multicoloured mosaic roof."] } },
-    "arc-triomf": { "name": "Arc de Triomf", "category": "landmark", "lat": 41.3911, "lng": 2.1806, "radius": 60 },
-    "sant-pau": { "name": "Recinte Modernista de Sant Pau", "category": "landmark", "lat": 41.4117, "lng": 2.1745, "radius": 120,
-      "tips": { "goodToKnow": ["A 15-min walk up Avinguda de Gaudí from the Sagrada Família."] } },
-    "montjuic-castle": { "name": "Castell de Montjuïc", "category": "viewpoint", "lat": 41.3637, "lng": 2.1661, "radius": 120 },
-    "camp-nou": { "name": "Spotify Camp Nou", "category": "landmark", "lat": 41.3809, "lng": 2.1228, "radius": 200, "url": "https://fcbarcelona.com" }
+    "boqueria": {
+      "name": "Mercat de la Boqueria",
+      "category": "market",
+      "lat": 41.3818,
+      "lng": 2.1717,
+      "radius": 70
+    },
+    "cathedral": {
+      "name": "Barcelona Cathedral",
+      "category": "church",
+      "lat": 41.384,
+      "lng": 2.1762,
+      "radius": 70,
+      "tips": {
+        "dontMiss": [
+          "The cloister with its 13 white geese."
+        ]
+      }
+    },
+    "placa-reial": {
+      "name": "Plaça Reial",
+      "category": "square",
+      "lat": 41.3801,
+      "lng": 2.1754,
+      "radius": 60,
+      "tips": {
+        "dontMiss": [
+          "The lampposts, early Gaudí designs."
+        ]
+      }
+    },
+    "santa-caterina": {
+      "name": "Mercat de Santa Caterina",
+      "category": "market",
+      "lat": 41.3862,
+      "lng": 2.1782,
+      "radius": 60,
+      "tips": {
+        "dontMiss": [
+          "The wavy, multicoloured mosaic roof."
+        ]
+      }
+    },
+    "arc-triomf": {
+      "name": "Arc de Triomf",
+      "category": "landmark",
+      "lat": 41.3911,
+      "lng": 2.1806,
+      "radius": 60
+    },
+    "sant-pau": {
+      "name": "Recinte Modernista de Sant Pau",
+      "category": "landmark",
+      "lat": 41.4117,
+      "lng": 2.1745,
+      "radius": 120,
+      "tips": {
+        "goodToKnow": [
+          "A 15-min walk up Avinguda de Gaudí from the Sagrada Família."
+        ]
+      }
+    },
+    "montjuic-castle": {
+      "name": "Castell de Montjuïc",
+      "category": "viewpoint",
+      "lat": 41.3637,
+      "lng": 2.1661,
+      "radius": 120
+    },
+    "camp-nou": {
+      "name": "Spotify Camp Nou",
+      "category": "landmark",
+      "lat": 41.3809,
+      "lng": 2.1228,
+      "radius": 200,
+      "url": "https://fcbarcelona.com"
+    },
+    "ath": {
+      "name": "Athens Airport (ATH)",
+      "category": "airport",
+      "lat": 37.9364,
+      "lng": 23.9445,
+      "radius": 800,
+      "tips": {
+        "goodToKnow": [
+          "Vueling VY8101 leaves at 11:20 Athens time. Aim to be there by ~09:20.",
+          "Online check-in and boarding pass in the Vueling app."
+        ]
+      }
+    },
+    "fgc-muntaner": {
+      "name": "FGC Muntaner station",
+      "category": "transport",
+      "lat": 41.3987,
+      "lng": 2.1428,
+      "radius": 80,
+      "tips": {
+        "goodToKnow": [
+          "~7 min walk from the hotel, entrance on Via Augusta.",
+          "To the centre: any train towards Plaça Catalunya, 4 stops (~8 min).",
+          "From the centre: L6, S1 or S2 stop here. L7 does not.",
+          "T-casual valid (zone 1)."
+        ]
+      }
+    }
   },
-
   "days": [
     {
-      "date": "2026-10-09", "name": "Friday", "theme": "Arrive · Picasso · first wander",
+      "date": "2026-10-09",
+      "name": "Friday",
+      "theme": "Fly in · Picasso · first wander",
       "events": [
-        { "id": "fri-arrive", "label": "~12:00", "start": "2026-10-09T12:00:00+02:00", "end": "2026-10-09T13:20:00+02:00",
-          "kind": "transfer", "title": "Land, Aerobús into town", "place": "airport",
-          "description": "A1/A2 to Plaça Catalunya, ~35 min. Buy the return ticket.", "booking": "aerobus" },
-        { "id": "fri-checkin", "label": "~13:30", "start": "2026-10-09T13:30:00+02:00", "end": "2026-10-09T14:00:00+02:00",
-          "kind": "logistics", "title": "Check in, drop bags", "place": "hotel",
-          "description": "Tourist tax is paid here." },
-        { "id": "fri-lunch", "label": "14:00", "start": "2026-10-09T14:00:00+02:00", "end": "2026-10-09T15:30:00+02:00",
-          "kind": "meal", "title": "Lunch", "place": "hotel",
-          "description": "A menú del día near the hotel — the best-value meal in town on weekdays." },
-        { "id": "fri-picasso", "label": "16:00", "start": "2026-10-09T16:00:00+02:00", "end": "2026-10-09T17:30:00+02:00",
-          "kind": "fixed", "title": "Picasso Museum", "place": "picasso", "booking": "picasso", "alert": true,
-          "description": "Carrer de Montcada, El Born. ~1.5 h. Don't miss the Las Meninas series." },
-        { "id": "fri-born", "label": "17:30 →", "start": "2026-10-09T17:30:00+02:00", "end": "2026-10-09T20:30:00+02:00",
-          "kind": "free", "title": "Free roam: El Born → the sea",
-          "stops": ["palau-musica", "santa-maria-mar", "passeig-born", "barceloneta"],
-          "description": "Palau de la Música façade (2 min away) · Santa Maria del Mar · Passeig del Born · drift down to Barceloneta for sunset (~19:15)." },
-        { "id": "fri-dinner", "label": "evening", "start": "2026-10-09T20:30:00+02:00", "end": "2026-10-09T23:59:00+02:00",
-          "kind": "meal", "title": "Hotel, change, dinner", "place": "el-born",
-          "description": "El Born is full of small tapas and wine bars. Dinner from 21:00, like the locals." }
+        {
+          "id": "fri-flight",
+          "label": "11:20 ATH",
+          "start": "2026-10-09T11:20:00+03:00",
+          "end": "2026-10-09T13:45:00+02:00",
+          "tz": "Europe/Athens",
+          "tzLabel": "Athens time",
+          "kind": "transfer",
+          "title": "Flight VY8101 Athens → Barcelona",
+          "place": "ath",
+          "alert": true,
+          "leadMinutes": 300,
+          "description": "Vueling VY8101. Athens 11:20 → Barcelona Terminal 1 at 13:45 (local times). Be at Athens airport by ~09:20 and keep your boarding pass offline."
+        },
+        {
+          "id": "fri-arrive",
+          "label": "13:45",
+          "start": "2026-10-09T13:45:00+02:00",
+          "end": "2026-10-09T15:15:00+02:00",
+          "kind": "transfer",
+          "title": "Land at T1 → hotel",
+          "place": "airport",
+          "stops": [
+            "pl-catalunya",
+            "fgc-muntaner"
+          ],
+          "booking": "aerobus",
+          "description": "1) Outside T1 arrivals take Aerobús A1 to Plaça Catalunya (last stop, ~35 min, €12.85 return; buy the return, you'll use it Monday). 2) At Plaça Catalunya take FGC L6, S1 or S2 to Muntaner (4 stops, ~8 min, T-casual valid; not L7). 3) Walk ~7 min to Carrer de Santaló 8. Door to door ~1 h 15 min. Taxi instead: ~30 min, roughly €35–45."
+        },
+        {
+          "id": "fri-checkin",
+          "label": "~15:15",
+          "start": "2026-10-09T15:15:00+02:00",
+          "end": "2026-10-09T15:40:00+02:00",
+          "kind": "logistics",
+          "title": "Check in at Zenit Barcelona",
+          "place": "hotel",
+          "description": "Check-in is from 14:00. Tourist tax is paid here."
+        },
+        {
+          "id": "fri-lunch",
+          "label": "15:45",
+          "start": "2026-10-09T15:45:00+02:00",
+          "end": "2026-10-09T16:30:00+02:00",
+          "kind": "meal",
+          "title": "Late lunch near the hotel",
+          "place": "hotel",
+          "description": "Menú del día is usually served until ~16:00 on weekdays. Otherwise grab tapas and keep it light before the museum."
+        },
+        {
+          "id": "fri-picasso",
+          "label": "17:00",
+          "start": "2026-10-09T17:00:00+02:00",
+          "end": "2026-10-09T18:30:00+02:00",
+          "kind": "fixed",
+          "title": "Picasso Museum",
+          "place": "picasso",
+          "booking": "picasso",
+          "alert": true,
+          "description": "Carrer de Montcada, El Born. ~1.5 h. Don't miss the Las Meninas series. From the hotel: FGC to Catalunya, then ~15 min walk (~35 min total), or a ~15 min taxi."
+        },
+        {
+          "id": "fri-born",
+          "label": "18:30 →",
+          "start": "2026-10-09T18:30:00+02:00",
+          "end": "2026-10-09T21:00:00+02:00",
+          "kind": "free",
+          "title": "Free roam: El Born → the sea",
+          "stops": [
+            "santa-maria-mar",
+            "passeig-born",
+            "barceloneta",
+            "palau-musica"
+          ],
+          "description": "Santa Maria del Mar and Passeig del Born are 2–4 min from the museum. Drift down to Barceloneta for the sunset colours (~19:15, ~20 min walk). Catch the Palau de la Música façade another time if you run late."
+        },
+        {
+          "id": "fri-dinner",
+          "label": "21:00",
+          "start": "2026-10-09T21:00:00+02:00",
+          "end": "2026-10-09T23:59:00+02:00",
+          "kind": "meal",
+          "title": "Dinner in El Born",
+          "place": "el-born",
+          "description": "El Born is full of small tapas and wine bars. Dinner from 21:00, like the locals. Back to the hotel by FGC (runs until ~midnight on weekdays, later on Fri/Sat) or taxi (~15 min)."
+        }
       ]
     },
     {
-      "date": "2026-10-10", "name": "Saturday", "theme": "Park Güell · a day in Gràcia · Bunkers sunset",
+      "date": "2026-10-10",
+      "name": "Saturday",
+      "theme": "Park Güell · a day in Gràcia · Bunkers sunset",
       "events": [
-        { "id": "sat-park-guell", "label": "9:30", "start": "2026-10-10T09:30:00+02:00", "end": "2026-10-10T11:00:00+02:00",
-          "kind": "fixed", "title": "Park Güell", "place": "park-guell", "booking": "park-guell", "alert": true,
-          "description": "First slot, before the crowds. Dragon stairway, the wavy bench, the view. ~1.5 h." },
-        { "id": "sat-gracia", "label": "11:30 →", "start": "2026-10-10T11:30:00+02:00", "end": "2026-10-10T17:00:00+02:00",
-          "kind": "free", "title": "Free roam: Gràcia", "stops": ["placa-virreina", "carrer-verdi", "casa-vicens"],
-          "description": "Walk downhill into Barcelona's village-like neighbourhood. Coffee in Plaça de la Virreina, browse Carrer de Verdi, long lunch outside in a square. No agenda." },
-        { "id": "sat-hotel", "label": "~17:00", "start": "2026-10-10T17:00:00+02:00", "end": "2026-10-10T18:30:00+02:00",
-          "kind": "logistics", "title": "Hotel, change", "place": "hotel",
-          "description": "Recharge before the evening." },
-        { "id": "sat-bunkers", "label": "18:30 →", "start": "2026-10-10T18:30:00+02:00", "end": "2026-10-10T20:45:00+02:00",
-          "kind": "free", "title": "Bunkers del Carmel at sunset", "place": "bunkers", "alert": true,
-          "description": "Free hilltop, 360° view of the city. Locals bring a beer and watch the lights come on. Take a jacket. Bus V17 or taxi up." },
-        { "id": "sat-dinner", "label": "21:00", "start": "2026-10-10T21:00:00+02:00", "end": "2026-10-10T23:59:00+02:00",
-          "kind": "meal", "title": "Dinner in Gràcia", "place": "placa-sol",
-          "description": "Short ride down. Plaça del Sol is lively on a Saturday night." }
+        {
+          "id": "sat-park-guell",
+          "label": "9:30",
+          "start": "2026-10-10T09:30:00+02:00",
+          "end": "2026-10-10T11:00:00+02:00",
+          "kind": "fixed",
+          "title": "Park Güell",
+          "place": "park-guell",
+          "booking": "park-guell",
+          "alert": true,
+          "description": "First slot, before the crowds. Dragon stairway, the wavy bench, the view. ~1.5 h."
+        },
+        {
+          "id": "sat-gracia",
+          "label": "11:30 →",
+          "start": "2026-10-10T11:30:00+02:00",
+          "end": "2026-10-10T17:00:00+02:00",
+          "kind": "free",
+          "title": "Free roam: Gràcia",
+          "stops": [
+            "placa-virreina",
+            "carrer-verdi",
+            "casa-vicens"
+          ],
+          "description": "Walk downhill into Barcelona's village-like neighbourhood. Coffee in Plaça de la Virreina, browse Carrer de Verdi, long lunch outside in a square. No agenda."
+        },
+        {
+          "id": "sat-hotel",
+          "label": "~17:00",
+          "start": "2026-10-10T17:00:00+02:00",
+          "end": "2026-10-10T18:30:00+02:00",
+          "kind": "logistics",
+          "title": "Hotel, change",
+          "place": "hotel",
+          "description": "Recharge before the evening."
+        },
+        {
+          "id": "sat-bunkers",
+          "label": "18:30 →",
+          "start": "2026-10-10T18:30:00+02:00",
+          "end": "2026-10-10T20:45:00+02:00",
+          "kind": "free",
+          "title": "Bunkers del Carmel at sunset",
+          "place": "bunkers",
+          "alert": true,
+          "description": "Free hilltop, 360° view of the city. Locals bring a beer and watch the lights come on. Take a jacket. Bus V17 or taxi up."
+        },
+        {
+          "id": "sat-dinner",
+          "label": "21:00",
+          "start": "2026-10-10T21:00:00+02:00",
+          "end": "2026-10-10T23:59:00+02:00",
+          "kind": "meal",
+          "title": "Dinner in Gràcia",
+          "place": "placa-sol",
+          "description": "Short ride down. Plaça del Sol is lively on a Saturday night."
+        }
       ]
     },
     {
-      "date": "2026-10-11", "name": "Sunday", "theme": "Sagrada Família · Passeig de Gràcia · lazy Sunday",
+      "date": "2026-10-11",
+      "name": "Sunday",
+      "theme": "Sagrada Família · Passeig de Gràcia · lazy Sunday",
       "events": [
-        { "id": "sun-sagrada", "label": "8:15", "start": "2026-10-11T08:15:00+02:00", "end": "2026-10-11T10:15:00+02:00",
-          "kind": "fixed", "title": "Sagrada Família — mass", "place": "sagrada", "alert": true,
-          "description": "Queue at the Carrer de la Marina door. Doors 8:30, mass 9:00, ~1 h. Free. No photos during mass. Walk round the façades afterwards." },
-        { "id": "sun-batllo", "label": "11:00", "start": "2026-10-11T11:00:00+02:00", "end": "2026-10-11T12:30:00+02:00",
-          "kind": "fixed", "optional": true, "title": "Casa Batlló (optional inside)", "place": "casa-batllo", "booking": "casa-batllo", "alert": true,
-          "stops": ["casa-batllo", "la-pedrera"],
-          "description": "~20 min walk down to Passeig de Gràcia. Inside ~1 h if booked; otherwise enjoy the façade and La Pedrera next door." },
-        { "id": "sun-vermut", "label": "13:00 →", "start": "2026-10-11T13:00:00+02:00", "end": "2026-10-11T17:30:00+02:00",
-          "kind": "free", "title": "Free roam: vermut & the Sunday feeling", "stops": ["sant-antoni", "parc-ciutadella", "barceloneta"],
-          "description": "Vermouth, olives and chips before lunch (Sant Antoni or Poble Sec). Then Ciutadella Park or the sand — do nothing like everyone else." },
-        { "id": "sun-hotel", "label": "~17:30", "start": "2026-10-11T17:30:00+02:00", "end": "2026-10-11T18:45:00+02:00",
-          "kind": "logistics", "title": "Hotel, change", "place": "hotel" },
-        { "id": "sun-montjuic", "label": "18:45 →", "start": "2026-10-11T18:45:00+02:00", "end": "2026-10-11T23:00:00+02:00",
-          "kind": "free", "title": "Montjuïc & Poble Sec", "stops": ["mnac", "carrer-blai"], "alert": true, "alertPlace": "mnac",
-          "description": "Sunset from the MNAC steps, then walk down to Carrer de Blai for a cheap pintxos crawl." }
+        {
+          "id": "sun-sagrada",
+          "label": "8:15",
+          "start": "2026-10-11T08:15:00+02:00",
+          "end": "2026-10-11T10:15:00+02:00",
+          "kind": "fixed",
+          "title": "Sagrada Família — mass",
+          "place": "sagrada",
+          "alert": true,
+          "description": "Queue at the Carrer de la Marina door. Doors 8:30, mass 9:00, ~1 h. Free. No photos during mass. Walk round the façades afterwards."
+        },
+        {
+          "id": "sun-batllo",
+          "label": "11:00",
+          "start": "2026-10-11T11:00:00+02:00",
+          "end": "2026-10-11T12:30:00+02:00",
+          "kind": "fixed",
+          "optional": true,
+          "title": "Casa Batlló (optional inside)",
+          "place": "casa-batllo",
+          "booking": "casa-batllo",
+          "alert": true,
+          "stops": [
+            "casa-batllo",
+            "la-pedrera"
+          ],
+          "description": "~20 min walk down to Passeig de Gràcia. Inside ~1 h if booked; otherwise enjoy the façade and La Pedrera next door."
+        },
+        {
+          "id": "sun-vermut",
+          "label": "13:00 →",
+          "start": "2026-10-11T13:00:00+02:00",
+          "end": "2026-10-11T17:30:00+02:00",
+          "kind": "free",
+          "title": "Free roam: vermut & the Sunday feeling",
+          "stops": [
+            "sant-antoni",
+            "parc-ciutadella",
+            "barceloneta"
+          ],
+          "description": "Vermouth, olives and chips before lunch (Sant Antoni or Poble Sec). Then Ciutadella Park or the sand — do nothing like everyone else."
+        },
+        {
+          "id": "sun-hotel",
+          "label": "~17:30",
+          "start": "2026-10-11T17:30:00+02:00",
+          "end": "2026-10-11T18:45:00+02:00",
+          "kind": "logistics",
+          "title": "Hotel, change",
+          "place": "hotel"
+        },
+        {
+          "id": "sun-montjuic",
+          "label": "18:45 →",
+          "start": "2026-10-11T18:45:00+02:00",
+          "end": "2026-10-11T23:00:00+02:00",
+          "kind": "free",
+          "title": "Montjuïc & Poble Sec",
+          "stops": [
+            "mnac",
+            "carrer-blai"
+          ],
+          "alert": true,
+          "alertPlace": "mnac",
+          "description": "Sunset from the MNAC steps, then walk down to Carrer de Blai for a cheap pintxos crawl."
+        }
       ]
     },
     {
-      "date": "2026-10-12", "name": "Monday", "theme": "Holiday morning · fly home",
+      "date": "2026-10-12",
+      "name": "Monday",
+      "theme": "Holiday morning · fly home",
       "events": [
-        { "id": "mon-goodbye", "label": "morning", "start": "2026-10-12T09:00:00+02:00", "end": "2026-10-12T12:00:00+02:00",
-          "kind": "free", "title": "Free roam: slow goodbye", "stops": ["la-rambla"],
-          "description": "Public holiday: shops shut, city relaxed. Breakfast somewhere nice, then La Rambla for the last day of the Festes del Roser. If a Sagrada ticket turned up, this is its slot." },
-        { "id": "mon-checkout", "label": "12:00", "start": "2026-10-12T12:00:00+02:00", "end": "2026-10-12T12:30:00+02:00",
-          "kind": "logistics", "title": "Checkout, leave bags", "place": "hotel", "alert": true, "leadMinutes": 90,
-          "description": "Ask the hotel to store your bags until the afternoon." },
-        { "id": "mon-lunch", "label": "13:00", "start": "2026-10-12T13:00:00+02:00", "end": "2026-10-12T14:30:00+02:00",
-          "kind": "meal", "title": "Final lunch", "place": "hotel", "description": "Near the hotel." },
-        { "id": "mon-aerobus", "label": "15:00", "start": "2026-10-12T15:00:00+02:00", "end": "2026-10-12T15:45:00+02:00",
-          "kind": "transfer", "title": "Aerobús to the airport", "place": "pl-catalunya", "alert": true, "leadMinutes": 240,
-          "description": "A1 for T1, A2 for T2. Comfortable margin for an 18:00 flight. Pick up your bags from the hotel first." },
-        { "id": "mon-flight", "label": "~18:00", "start": "2026-10-12T18:00:00+02:00", "end": "2026-10-12T18:30:00+02:00",
-          "kind": "transfer", "title": "Flight home", "place": "airport", "alert": true, "leadMinutes": 300,
-          "description": "Check your departure terminal (T1 or T2)." }
+        {
+          "id": "mon-checkout",
+          "label": "~10:00",
+          "start": "2026-10-12T10:00:00+02:00",
+          "end": "2026-10-12T10:30:00+02:00",
+          "kind": "logistics",
+          "title": "Pack, check out, leave bags",
+          "place": "hotel",
+          "alert": true,
+          "leadMinutes": 60,
+          "description": "Check-out is by 12:00. Do it now and ask reception to keep your bags until ~14:30, so you're free for the morning."
+        },
+        {
+          "id": "mon-goodbye",
+          "label": "10:30 →",
+          "start": "2026-10-12T10:30:00+02:00",
+          "end": "2026-10-12T13:00:00+02:00",
+          "kind": "free",
+          "title": "Free roam: slow goodbye",
+          "stops": [
+            "la-rambla"
+          ],
+          "description": "Public holiday: shops shut, city relaxed. Breakfast somewhere nice, then La Rambla for the last day of the Festes del Roser. If a Sagrada ticket turned up, this is its slot."
+        },
+        {
+          "id": "mon-lunch",
+          "label": "13:00",
+          "start": "2026-10-12T13:00:00+02:00",
+          "end": "2026-10-12T14:15:00+02:00",
+          "kind": "meal",
+          "title": "Final lunch near the hotel",
+          "place": "hotel",
+          "description": "Eat in Sant Gervasi so collecting your bags is a short walk."
+        },
+        {
+          "id": "mon-bags",
+          "label": "14:30",
+          "start": "2026-10-12T14:30:00+02:00",
+          "end": "2026-10-12T14:45:00+02:00",
+          "kind": "logistics",
+          "title": "Collect bags at the hotel",
+          "place": "hotel",
+          "alert": true,
+          "leadMinutes": 60
+        },
+        {
+          "id": "mon-to-airport",
+          "label": "14:45",
+          "start": "2026-10-12T14:45:00+02:00",
+          "end": "2026-10-12T15:50:00+02:00",
+          "kind": "transfer",
+          "title": "To the airport: FGC + Aerobús A1",
+          "place": "airport",
+          "stops": [
+            "fgc-muntaner",
+            "pl-catalunya"
+          ],
+          "alert": true,
+          "alertPlace": "fgc-muntaner",
+          "leadMinutes": 180,
+          "description": "1) Walk ~7 min to FGC Muntaner (Via Augusta). 2) Any train to Plaça Catalunya (4 stops, ~8 min). 3) Aerobús A1 (Terminal 1) from Plaça Catalunya, ~35 min, using your return ticket. You'll reach T1 ~15:50, 2 h 20 min before the flight. Taxi instead: leave the hotel by ~15:15, ~30 min, roughly €35–45."
+        },
+        {
+          "id": "mon-flight",
+          "label": "18:10",
+          "start": "2026-10-12T18:10:00+02:00",
+          "end": "2026-10-12T21:55:00+03:00",
+          "kind": "transfer",
+          "title": "Flight A3743 Barcelona → Athens",
+          "place": "airport",
+          "alert": true,
+          "leadMinutes": 300,
+          "description": "Aegean A3743 from Terminal 1, 18:10 → Athens 21:55 (local time). Light fare: no checked bag, so check the cabin-bag size before you pack. Check in online in the Aegean app."
+        }
       ]
     }
   ],
-
   "checklists": [
     {
-      "id": "prebook", "title": "Prebook", "icon": "ticket",
+      "id": "prebook",
+      "title": "Prebook",
+      "icon": "ticket",
       "groups": [
-        { "id": "book-now", "title": "Book now", "tone": "urgent", "items": [
-          { "id": "park-guell", "title": "Park Güell", "price": "€18", "url": "https://parkguell.barcelona", "event": "sat-park-guell",
-            "note": "Timed slot, Saturday 9:30. Long weekend, so slots go fast. You get 30 min grace after your slot time." },
-          { "id": "picasso", "title": "Picasso Museum", "price": "€14", "url": "https://museupicassobcn.cat", "event": "fri-picasso",
-            "note": "€14 online (€15 at the door). Friday ~16:00. Daily visitor cap, so book a timed slot." },
-          { "id": "casa-batllo", "title": "Casa Batlló", "optional": true, "price": "from €29", "url": "https://casabatllo.es", "event": "sun-batllo",
-            "note": "From €29 (Blue); the rooftop needs Silver, from €34. Prices rise closer to the date." }
-        ] },
-        { "id": "keep-trying", "title": "Keep trying", "tone": "warn", "items": [
-          { "id": "sagrada", "title": "Sagrada Família ticket", "price": "€26 / ~€89", "url": "https://sagradafamilia.org",
-            "note": "Sold out for now. Check sagradafamilia.org daily for cancellations. Plan B: guided tour via GetYourGuide (~€89). Plan C: the free Sunday 9:00 mass (already in the plan). A ticket would go in the Monday morning slot." }
-        ] },
-        { "id": "on-arrival", "title": "On arrival", "tone": "calm", "items": [
-          { "id": "aerobus", "title": "Aerobús return", "price": "€12.85", "url": "https://aerobusbarcelona.es", "event": "fri-arrive",
-            "note": "€12.85 return (€7.45 single). A1 = Terminal 1, A2 = Terminal 2." },
-          { "id": "terminal", "title": "Check Monday's departure terminal", "note": "T1 or T2 decides A1 vs A2. Set it in Settings so the map points at the right terminal." },
-          { "id": "t-casual", "title": "T-casual card", "price": "€11.35", "note": "10 metro/bus rides. Not valid on the Aerobús. Buy at any metro machine." },
-          { "id": "hotel-tax", "title": "Hotel: tourist tax & bag storage", "price": "~€20–25", "note": "Tourist tax is paid at the hotel (~€20–25 per person for 3 nights). Ask to store bags on Monday after checkout." }
-        ] }
+        {
+          "id": "book-now",
+          "title": "Book now",
+          "tone": "urgent",
+          "items": [
+            {
+              "id": "park-guell",
+              "title": "Park Güell",
+              "price": "€18",
+              "url": "https://parkguell.barcelona",
+              "event": "sat-park-guell",
+              "note": "Timed slot, Saturday 9:30. Long weekend, so slots go fast. You get 30 min grace after your slot time."
+            },
+            {
+              "id": "picasso",
+              "title": "Picasso Museum",
+              "price": "€14",
+              "url": "https://museupicassobcn.cat",
+              "event": "fri-picasso",
+              "note": "€14 online (€15 at the door). Book the 17:00 slot on Friday: you land at 13:45. Daily visitor cap, so book a timed slot."
+            },
+            {
+              "id": "casa-batllo",
+              "title": "Casa Batlló",
+              "optional": true,
+              "price": "from €29",
+              "url": "https://casabatllo.es",
+              "event": "sun-batllo",
+              "note": "From €29 (Blue); the rooftop needs Silver, from €34. Prices rise closer to the date."
+            }
+          ]
+        },
+        {
+          "id": "keep-trying",
+          "title": "Keep trying",
+          "tone": "warn",
+          "items": [
+            {
+              "id": "sagrada",
+              "title": "Sagrada Família ticket",
+              "price": "€26 / ~€89",
+              "url": "https://sagradafamilia.org",
+              "note": "Sold out for now. Check sagradafamilia.org daily for cancellations. Plan B: guided tour via GetYourGuide (~€89). Plan C: the free Sunday 9:00 mass (already in the plan). A ticket would go in the Monday morning slot."
+            }
+          ]
+        },
+        {
+          "id": "flights",
+          "title": "Flights",
+          "tone": "calm",
+          "items": [
+            {
+              "id": "vy-checkin",
+              "title": "Vueling online check-in · VY8101",
+              "url": "https://www.vueling.com",
+              "event": "fri-flight",
+              "note": "Fri 9 Oct: Athens 11:20 → Barcelona T1 13:45. Save the boarding pass offline."
+            },
+            {
+              "id": "a3-checkin",
+              "title": "Aegean online check-in · A3743",
+              "url": "https://en.aegeanair.com",
+              "event": "mon-flight",
+              "note": "Mon 12 Oct: Barcelona T1 18:10 → Athens 21:55. Light fare, so no checked bag: check the cabin-bag allowance."
+            }
+          ]
+        },
+        {
+          "id": "on-arrival",
+          "title": "On arrival",
+          "tone": "calm",
+          "items": [
+            {
+              "id": "aerobus",
+              "title": "Aerobús return",
+              "price": "€12.85",
+              "url": "https://aerobusbarcelona.es",
+              "event": "fri-arrive",
+              "note": "€12.85 return (€7.45 single). Take A1 both ways: both your flights use Terminal 1."
+            },
+            {
+              "id": "t-casual",
+              "title": "T-casual card",
+              "price": "€11.35",
+              "note": "10 metro/bus/FGC rides for €11.35. Covers the FGC train between the hotel (Muntaner) and Plaça Catalunya. Not valid on the Aerobús. Buy at any metro or FGC machine."
+            },
+            {
+              "id": "hotel-tax",
+              "title": "Zenit Barcelona: tourist tax & bag storage",
+              "price": "~€20–25",
+              "note": "Tourist tax is paid at the hotel (~€20–25 per person for 3 nights). Ask to store bags on Monday after checkout."
+            }
+          ]
+        }
       ]
     },
     {
-      "id": "pack", "title": "Pack", "icon": "bag",
+      "id": "pack",
+      "title": "Pack",
+      "icon": "bag",
       "groups": [
-        { "id": "from-plan", "title": "From your plan", "items": [
-          { "id": "id", "title": "Photo ID / passport", "note": "Sagrada tickets are name-checked against ID." },
-          { "id": "shoulders", "title": "Something covering shoulders", "note": "For the Sagrada mass." },
-          { "id": "shoes", "title": "Comfortable shoes", "note": "You'll walk a lot. Park Güell and the Bunkers are uphill." },
-          { "id": "layer", "title": "Light layer", "note": "October evenings get cool, especially at the Bunkers and Montjuïc." }
-        ] },
-        { "id": "suggested", "title": "Worth bringing", "suggested": true, "items": [
-          { "id": "power-bank", "title": "Power bank + cable", "note": "Live GPS tracking drains the battery." },
-          { "id": "charger", "title": "Phone charger" },
-          { "id": "zip-bag", "title": "Small zipped bag / front-pocket wallet", "note": "Pickpockets on the metro, La Rambla and the beach." },
-          { "id": "cards", "title": "Bank card + a little cash" },
-          { "id": "boarding", "title": "Boarding passes, saved offline" },
-          { "id": "insurance", "title": "Travel insurance / EHIC card" },
-          { "id": "sun", "title": "Sunglasses & sunscreen" },
-          { "id": "bottle", "title": "Refillable water bottle" },
-          { "id": "camera", "title": "Camera, spare battery & SD card" },
-          { "id": "adapter", "title": "Plug adapter (Type C/F)", "note": "Only if you're coming from outside the EU." }
-        ] }
+        {
+          "id": "from-plan",
+          "title": "From your plan",
+          "items": [
+            {
+              "id": "id",
+              "title": "Photo ID / passport",
+              "note": "Sagrada tickets are name-checked against ID."
+            },
+            {
+              "id": "shoulders",
+              "title": "Something covering shoulders",
+              "note": "For the Sagrada mass."
+            },
+            {
+              "id": "shoes",
+              "title": "Comfortable shoes",
+              "note": "You'll walk a lot. Park Güell and the Bunkers are uphill."
+            },
+            {
+              "id": "layer",
+              "title": "Light layer",
+              "note": "October evenings get cool, especially at the Bunkers and Montjuïc."
+            }
+          ]
+        },
+        {
+          "id": "suggested",
+          "title": "Worth bringing",
+          "suggested": true,
+          "items": [
+            {
+              "id": "power-bank",
+              "title": "Power bank + cable",
+              "note": "Live GPS tracking drains the battery."
+            },
+            {
+              "id": "charger",
+              "title": "Phone charger"
+            },
+            {
+              "id": "zip-bag",
+              "title": "Small zipped bag / front-pocket wallet",
+              "note": "Pickpockets on the metro, La Rambla and the beach."
+            },
+            {
+              "id": "cards",
+              "title": "Bank card + a little cash"
+            },
+            {
+              "id": "boarding",
+              "title": "Boarding passes saved offline",
+              "note": "Vueling VY8101 (Fri) and Aegean A3743 (Mon)."
+            },
+            {
+              "id": "insurance",
+              "title": "Travel insurance / EHIC card"
+            },
+            {
+              "id": "sun",
+              "title": "Sunglasses & sunscreen"
+            },
+            {
+              "id": "bottle",
+              "title": "Refillable water bottle"
+            },
+            {
+              "id": "camera",
+              "title": "Camera, spare battery & SD card"
+            },
+            {
+              "id": "adapter",
+              "title": "Plug adapter (Type C/F)",
+              "note": "Only if you're coming from outside the EU."
+            }
+          ]
+        }
       ]
     }
   ],
-
   "nudges": [
-    { "id": "sagrada-daily", "title": "Sagrada Família", "text": "Check sagradafamilia.org for cancellations today.",
-      "from": "2026-09-29T09:00:00+02:00", "until": "2026-10-12T10:00:00+02:00", "unlessChecked": "sagrada", "snoozeHours": 20, "url": "https://sagradafamilia.org" },
-    { "id": "terminal", "title": "Departure terminal", "text": "Check whether Monday's flight leaves from T1 or T2, then set it in Settings.",
-      "from": "2026-10-10T18:00:00+02:00", "until": "2026-10-12T15:00:00+02:00", "unlessChecked": "terminal", "snoozeHours": 6 },
-    { "id": "sat-jacket", "title": "Grab a jacket", "text": "The Bunkers get windy after sunset.",
-      "from": "2026-10-10T17:00:00+02:00", "until": "2026-10-10T18:45:00+02:00" },
-    { "id": "sun-prep", "title": "Tomorrow: Sagrada mass", "text": "Queue at 8:15 at the Carrer de la Marina door. Covered shoulders, bring ID.",
-      "from": "2026-10-10T21:00:00+02:00", "until": "2026-10-11T08:15:00+02:00" },
-    { "id": "sun-layer", "title": "Light layer", "text": "Montjuïc gets cool after sunset.",
-      "from": "2026-10-11T17:30:00+02:00", "until": "2026-10-11T19:00:00+02:00" },
-    { "id": "mon-sagrada", "title": "Got a Sagrada ticket?", "text": "If one turned up, this morning is its slot.",
-      "from": "2026-10-12T08:00:00+02:00", "until": "2026-10-12T11:00:00+02:00", "onlyIfChecked": "sagrada" }
+    {
+      "id": "sagrada-daily",
+      "title": "Sagrada Família",
+      "text": "Check sagradafamilia.org for cancellations today.",
+      "from": "2026-09-29T09:00:00+02:00",
+      "until": "2026-10-12T10:00:00+02:00",
+      "unlessChecked": "sagrada",
+      "snoozeHours": 20,
+      "url": "https://sagradafamilia.org"
+    },
+    {
+      "id": "sat-jacket",
+      "title": "Grab a jacket",
+      "text": "The Bunkers get windy after sunset.",
+      "from": "2026-10-10T17:00:00+02:00",
+      "until": "2026-10-10T18:45:00+02:00"
+    },
+    {
+      "id": "sun-prep",
+      "title": "Tomorrow: Sagrada mass",
+      "text": "Queue at 8:15 at the Carrer de la Marina door. Covered shoulders, bring ID.",
+      "from": "2026-10-10T21:00:00+02:00",
+      "until": "2026-10-11T08:15:00+02:00"
+    },
+    {
+      "id": "sun-layer",
+      "title": "Light layer",
+      "text": "Montjuïc gets cool after sunset.",
+      "from": "2026-10-11T17:30:00+02:00",
+      "until": "2026-10-11T19:00:00+02:00"
+    },
+    {
+      "id": "mon-sagrada",
+      "title": "Got a Sagrada ticket?",
+      "text": "If one turned up, this morning is its slot.",
+      "from": "2026-10-12T08:00:00+02:00",
+      "until": "2026-10-12T11:00:00+02:00",
+      "onlyIfChecked": "sagrada"
+    },
+    {
+      "id": "fri-flight-prep",
+      "title": "Flying tomorrow",
+      "text": "VY8101 leaves Athens at 11:20. Check in online and save the boarding pass offline.",
+      "from": "2026-10-08T12:00:00+02:00",
+      "until": "2026-10-09T09:00:00+02:00",
+      "unlessChecked": "vy-checkin",
+      "snoozeHours": 6
+    },
+    {
+      "id": "mon-flight-prep",
+      "title": "Aegean check-in",
+      "text": "Check in online for A3743 (18:10, T1) and save the boarding pass.",
+      "from": "2026-10-11T18:00:00+02:00",
+      "until": "2026-10-12T15:00:00+02:00",
+      "unlessChecked": "a3-checkin",
+      "snoozeHours": 6
+    }
   ],
-
   "budget": {
     "rows": [
-      { "item": "Aerobús return", "cost": "€12.85", "note": "Buy on arrival" },
-      { "item": "T-casual (10 rides)", "cost": "€11.35", "note": "Covers all your metro/bus trips" },
-      { "item": "Park Güell", "cost": "€18", "note": "Book online" },
-      { "item": "Picasso Museum", "cost": "€14", "note": "Book online" },
-      { "item": "Sagrada Família", "cost": "€0 – €89", "note": "Free mass · €26 ticket · ~€89 guided tour" },
-      { "item": "Casa Batlló", "cost": "€0 – €34+", "note": "Free from outside · €29 Blue · €34+ with rooftop" },
-      { "item": "Tourist tax", "cost": "~€20–25", "note": "3 nights, depends on hotel category" }
+      {
+        "item": "Aerobús return",
+        "cost": "€12.85",
+        "note": "Buy on arrival"
+      },
+      {
+        "item": "T-casual (10 rides)",
+        "cost": "€11.35",
+        "note": "Covers all your metro/bus trips"
+      },
+      {
+        "item": "Park Güell",
+        "cost": "€18",
+        "note": "Book online"
+      },
+      {
+        "item": "Picasso Museum",
+        "cost": "€14",
+        "note": "Book online"
+      },
+      {
+        "item": "Sagrada Família",
+        "cost": "€0 – €89",
+        "note": "Free mass · €26 ticket · ~€89 guided tour"
+      },
+      {
+        "item": "Casa Batlló",
+        "cost": "€0 – €34+",
+        "note": "Free from outside · €29 Blue · €34+ with rooftop"
+      },
+      {
+        "item": "Tourist tax",
+        "cost": "~€20–25",
+        "note": "3 nights, depends on hotel category"
+      }
     ],
-    "total": { "item": "Core total", "cost": "≈ €80", "note": "Aerobús + T-casual + Park Güell + Picasso + tax" }
+    "total": {
+      "item": "Core total",
+      "cost": "≈ €80",
+      "note": "Aerobús + T-casual + Park Güell + Picasso + tax"
+    }
   },
-
   "guide": [
-    { "title": "Eat late", "text": "Lunch 14:00–16:00, dinner from 21:00. A restaurant that's full at 19:30 is full of tourists." },
-    { "title": "Menú del día", "text": "Weekday set lunch — the best-value meal in town. Not usually offered at weekends." },
-    { "title": "Vermut", "text": "Late-morning / pre-lunch vermouth on weekends, with olives and chips. Very Barcelona." },
-    { "title": "Sundays & holidays", "text": "Most shops shut Sunday and Monday 12 Oct; bars and restaurants stay open." },
-    { "title": "Museums & Mondays", "text": "Most museums close on Mondays — that's why Picasso is on Friday." },
-    { "title": "Pickpockets", "text": "Front pocket or zipped bag on the metro, La Rambla and at the beach. Never leave your phone on the table." },
-    { "title": "Getting lost", "text": "Best way to see the city: pick a neighbourhood, put the phone away, stop wherever looks good. Gràcia, El Born and Sant Antoni reward this most." },
-    { "title": "Catalan basics", "text": "Bon dia (good morning) · Gràcies (thanks) · Si us plau (please) · Adéu (bye)." }
+    {
+      "title": "Eat late",
+      "text": "Lunch 14:00–16:00, dinner from 21:00. A restaurant that's full at 19:30 is full of tourists."
+    },
+    {
+      "title": "Menú del día",
+      "text": "Weekday set lunch — the best-value meal in town. Not usually offered at weekends."
+    },
+    {
+      "title": "Vermut",
+      "text": "Late-morning / pre-lunch vermouth on weekends, with olives and chips. Very Barcelona."
+    },
+    {
+      "title": "Sundays & holidays",
+      "text": "Most shops shut Sunday and Monday 12 Oct; bars and restaurants stay open."
+    },
+    {
+      "title": "Museums & Mondays",
+      "text": "Most museums close on Mondays — that's why Picasso is on Friday."
+    },
+    {
+      "title": "Pickpockets",
+      "text": "Front pocket or zipped bag on the metro, La Rambla and at the beach. Never leave your phone on the table."
+    },
+    {
+      "title": "Getting lost",
+      "text": "Best way to see the city: pick a neighbourhood, put the phone away, stop wherever looks good. Gràcia, El Born and Sant Antoni reward this most."
+    },
+    {
+      "title": "Catalan basics",
+      "text": "Bon dia (good morning) · Gràcies (thanks) · Si us plau (please) · Adéu (bye)."
+    }
   ],
-
   "links": [
-    { "label": "Sagrada Família tickets & mass info", "url": "https://sagradafamilia.org" },
-    { "label": "Park Güell tickets", "url": "https://parkguell.barcelona" },
-    { "label": "Picasso Museum", "url": "https://museupicassobcn.cat" },
-    { "label": "Casa Batlló", "url": "https://casabatllo.es" },
-    { "label": "FC Barcelona match tickets", "url": "https://fcbarcelona.com" },
-    { "label": "Aerobús airport bus", "url": "https://aerobusbarcelona.es" }
+    {
+      "label": "Vueling (VY8101 in)",
+      "url": "https://www.vueling.com"
+    },
+    {
+      "label": "Aegean (A3743 out)",
+      "url": "https://en.aegeanair.com"
+    },
+    {
+      "label": "Sagrada Família tickets & mass info",
+      "url": "https://sagradafamilia.org"
+    },
+    {
+      "label": "Park Güell tickets",
+      "url": "https://parkguell.barcelona"
+    },
+    {
+      "label": "Picasso Museum",
+      "url": "https://museupicassobcn.cat"
+    },
+    {
+      "label": "Casa Batlló",
+      "url": "https://casabatllo.es"
+    },
+    {
+      "label": "FC Barcelona match tickets",
+      "url": "https://fcbarcelona.com"
+    },
+    {
+      "label": "Aerobús airport bus",
+      "url": "https://aerobusbarcelona.es"
+    }
   ],
-  "emergency": "112"
+  "emergency": "112",
+  "hotel": {
+    "name": "Zenit Barcelona",
+    "address": "Carrer de Santaló 8, Sant Gervasi, 08021 Barcelona",
+    "lat": 41.395,
+    "lng": 2.147,
+    "phone": "+34 689 11 18 31",
+    "tips": {
+      "goodToKnow": [
+        "Check-in from 14:00 (Fri). Check-out by 12:00 (Mon).",
+        "Nearest train: FGC Muntaner on Via Augusta, ~7 min walk. Trains from there go straight to Plaça Catalunya (~8 min).",
+        "The tourist tax is paid here (~€20–25 per person for 3 nights).",
+        "Ask to store your bags on Monday after you check out."
+      ]
+    }
+  }
 }

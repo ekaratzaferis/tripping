@@ -1,6 +1,7 @@
 // Loads a trip config (bundled JSON, ?trip=url, or an imported override) and
 // resolves dynamic places like "hotel" and "airport" from settings.
 import { settings, tripOverride } from './store.js';
+import { fmtTime } from './util.js';
 
 export const DEFAULT_TRIP_URL = 'data/barcelona-2026.json';
 
@@ -64,8 +65,10 @@ function normalize(raw) {
 export function resolvePlace(trip, id) {
   if (!id) return null;
   if (id === 'hotel') {
+    // A hotel set on this device (Settings) wins over the one in the trip file.
     const h = settings.get().hotel;
-    if (h && isFinite(h.lat)) return { id, category: 'hotel', radius: 60, ...h, name: h.name || 'Your hotel' };
+    if (h && isFinite(h.lat)) return { id, category: 'hotel', radius: 60, ...(trip.hotel || {}), ...h, name: h.name || 'Your hotel' };
+    if (trip.hotel && isFinite(trip.hotel.lat)) return { id, category: 'hotel', radius: 60, ...trip.hotel };
     return { id, category: 'hotel', name: 'Your hotel', missing: true };
   }
   if (id === 'airport') {
@@ -88,3 +91,10 @@ export function eventPlaces(trip, ev) {
 }
 
 export const hasCoords = (p) => p && isFinite(p.lat) && isFinite(p.lng);
+
+// Event start time for display. Events elsewhere (e.g. a flight leaving
+// Athens) carry their own `tz` and show local time there.
+export function eventTime(trip, e) {
+  if (e.tz && e.tz !== trip.timezone) return `${fmtTime(e.startD, e.tz)} ${e.tzLabel || 'local time'}`;
+  return fmtTime(e.startD, trip.timezone);
+}

@@ -40,8 +40,9 @@ export function createSettingsView(root, ctx) {
 
       <section class="card">
         <h3>🛏️ Your hotel</h3>
+        ${!s.hotel?.lat && trip.hotel?.lat ? `<div class="callout ok"><div><b>${esc(trip.hotel.name)}</b><br><span class="small muted">${esc(trip.hotel.address || '')}</span><br><span class="small muted">From your trip plan. Search below only if it changes.</span></div></div>` : ''}
         ${s.hotel?.lat ? `<div class="callout ok"><div><b>${esc(s.hotel.name || 'Hotel')}</b><br><span class="small muted">${esc(s.hotel.address || `${s.hotel.lat.toFixed(5)}, ${s.hotel.lng.toFixed(5)}`)}</span></div>
-          <button class="icon-btn subtle" data-act="hotel-clear" aria-label="Clear hotel">${icon('trash')}</button></div>` : '<p class="muted small">Used for "back to the hotel", checkout and lunch-nearby reminders.</p>'}
+          <button class="icon-btn subtle" data-act="hotel-clear" aria-label="Clear hotel">${icon('trash')}</button></div>` : trip.hotel?.lat ? '' : '<p class="muted small">Used for "back to the hotel", checkout and lunch-nearby reminders.</p>'}
         <form class="row-form" data-form="hotel-search">
           <input name="q" placeholder="Hotel name or address" value="">
           <button class="btn small">Search</button>

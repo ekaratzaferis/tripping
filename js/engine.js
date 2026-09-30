@@ -1,7 +1,7 @@
 // The "brain" of the live guide. Given the trip, the time and my position it
 // works out: what's happening now, where I'm heading, which alerts to show,
 // which activities to check in on, and which tips are relevant.
-import { resolvePlace, eventPlace, eventPlaces, hasCoords } from './trip.js';
+import { resolvePlace, eventPlace, eventPlaces, hasCoords, eventTime } from './trip.js';
 import { distance, travelEstimate, fmtTime, fmtDist, fmtDuration, dayKey, relTime } from './util.js';
 
 const TRACKED_KINDS = new Set(['fixed', 'free', 'transfer']);
@@ -91,7 +91,7 @@ export function computeState({ trip, ts, now, pos }) {
     let level = 'info';
     if (!arrived && minsToLeave <= 0) level = 'urgent';
     else if (!arrived && minsToLeave <= 30) level = 'warn';
-    const parts = [`${e.title} at ${fmtTime(e.startD, tz)} (${relTime(e.startD - t)})`];
+    const parts = [`${e.title} at ${eventTime(trip, e)} (${relTime(e.startD - t)})`];
     if (arrived) parts.push("You're there.");
     else if (eta) parts.push(`${fmtDist(d)} away, ~${fmtDuration(eta.mins)} ${eta.mode === 'walk' ? 'on foot' : 'by metro/taxi'}. ${level === 'urgent' ? 'Leave now!' : `Leave by ${fmtTime(new Date(leaveBy), tz)}.`}`);
     alerts.push({
