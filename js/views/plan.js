@@ -75,7 +75,7 @@ export function createPlanView(root, ctx) {
   }
 
   function bookChip(item, booked) {
-    const onSite = item.tone === 'calm';
+    const onSite = item.group === 'on-arrival'; // bought there, not booked ahead
     const label = booked ? (onSite ? 'Sorted' : 'Booked') : onSite ? 'Buy there' : 'Not booked';
     return `<span class="book-chip ${booked ? 'ok' : onSite ? 'todo' : 'bad'}">${icon('ticket')} ${label}</span>`;
   }

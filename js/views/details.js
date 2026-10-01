@@ -2,7 +2,23 @@
 // (the "tips" overlay: things not to miss, good to know, directions).
 import { resolvePlace, eventPlaces, hasCoords } from '../trip.js';
 import { esc, cat, fmtDate, fmtTime, fmtDist, distance, directionsUrl, travelEstimate, fmtDuration } from '../util.js';
-import { icon, modal } from '../ui.js';
+import { icon, modal, toast } from '../ui.js';
+
+// Booking numbers (locators, confirmations): big, tap to copy.
+export function refsHtml(refs) {
+  if (!refs?.length) return '';
+  return `<div class="refs">${refs.map((r) => `<button class="ref" data-copy="${esc(r.value)}" title="Tap to copy">
+    <small>${esc(r.label)}</small><b>${esc(r.value)}</b></button>`).join('')}</div>`;
+}
+
+export function wireCopy(el) {
+  el.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-copy]');
+    if (!b) return;
+    e.stopPropagation();
+    try { await navigator.clipboard.writeText(b.dataset.copy); toast('Copied'); } catch { toast(b.dataset.copy); }
+  });
+}
 
 export const KIND_LABEL = {
   fixed: 'Fixed · booked or timed', free: 'Free roam', transfer: 'Transfer', logistics: 'Logistics', meal: 'Food',
@@ -39,6 +55,7 @@ export function openPlace(ctx, placeOrId, { reason } = {}) {
         ${d != null ? `<div class="chip-row"><span class="chip">${icon('pin')} ${fmtDist(d)}</span>${eta ? `<span class="chip">${icon('clock')} ~${fmtDuration(eta.mins)} ${eta.mode === 'walk' ? 'walk' : 'by metro/taxi'}</span>` : ''}</div>` : ''}
       </div>
     </div>
+    ${refsHtml(place.refs)}
     ${body || `<p class="muted">No tips saved for this place yet. Wander and enjoy.</p>`}
     ${place.missing ? `<p class="callout">Set your hotel's location in Settings to navigate here.</p>` : ''}
     <div class="btn-row">
@@ -49,6 +66,7 @@ export function openPlace(ctx, placeOrId, { reason } = {}) {
     </div>`, {
     cls: 'place-sheet',
     onMount(el, close) {
+      wireCopy(el);
       el.querySelector('[data-act="target"]')?.addEventListener('click', () => {
         ctx.ts.setTarget(isTarget ? null : place.id);
         close();
@@ -80,6 +98,7 @@ export function openEvent(ctx, eventId) {
         ${status ? `<span class="chip ${status === 'done' ? 'ok' : ''}">${status === 'done' ? '✓ Done' : 'Skipped'}</span>` : ''}
       </div>
     </div>
+    ${refsHtml(e.refs)}
     ${e.description ? `<p class="lead">${esc(e.description)}</p>` : ''}
     ${places.length ? `<h4 class="tips-h">${e.stops?.length ? 'Stops' : 'Where'}</h4>
       <div class="place-list">${places.map((p) => {
@@ -101,9 +120,10 @@ export function openEvent(ctx, eventId) {
       ${places.some(hasCoords) ? `<button class="btn ghost" data-act="map">${icon('map')} On the map</button>` : ''}
     </div>`, {
     onMount(el, close) {
+      wireCopy(el);
       el.addEventListener('click', (ev) => {
         const b = ev.target.closest('button');
-        if (!b) return;
+        if (!b || b.dataset.copy) return;
         if (b.dataset.place) { openPlace(ctx, b.dataset.place, { reason: e.title }); return; }
         if (b.dataset.status !== undefined) { ts.setStatus(e.id, b.dataset.status || null); close(); return; }
         if (b.dataset.act === 'book') { ts.toggle(booking.id); openEvent(ctx, eventId); return; }

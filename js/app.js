@@ -32,7 +32,8 @@ async function main() {
     return;
   }
   document.title = `${trip.title} · Triparw`;
-  const ts = tripState(trip.id);
+  const doneByDefault = Object.fromEntries(Object.values(trip.itemById).filter((i) => i.done).map((i) => [i.id, true]));
+  const ts = tripState(trip.id, doneByDefault);
   let current = null;
 
   const ctx = {

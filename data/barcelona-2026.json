@@ -88,7 +88,7 @@
         ],
         "goodToKnow": [
           "Allow ~1.5 h. Big bags go in the cloakroom.",
-          "Most museums close on Mondays, which is why this is on Friday.",
+          "Most museums close on Mondays, so Sunday is the last chance.",
           "Santa Maria del Mar is a 4-minute walk away."
         ]
       }
@@ -281,11 +281,11 @@
       "url": "https://casabatllo.es",
       "tips": {
         "dontMiss": [
-          "The 'house of bones' façade: mask-like balconies and bone-shaped pillars.",
+          "The 'house of bones' façade, lit up at night: mask-like balconies and bone-shaped pillars.",
           "The roof, shaped like a dragon's back, with Saint George's cross-shaped tower.",
           "Inside: the mushroom-shaped fireplace and the noble floor's wavy windows.",
           "The light well, where the tiles go from deep to pale blue so the light spreads evenly.",
-          "The rooftop chimneys (Silver ticket and up)."
+          "The rooftop chimneys, if your ticket includes the rooftop."
         ],
         "goodToKnow": [
           "Next door: Casa Amatller and Casa Lleó Morera, the 'Block of Discord' with three modernista architects in one block."
@@ -490,7 +490,7 @@
     {
       "date": "2026-10-09",
       "name": "Friday",
-      "theme": "Fly in · Picasso · first wander",
+      "theme": "Fly in · Gothic Quarter · Casa Batlló by night",
       "events": [
         {
           "id": "fri-flight",
@@ -504,7 +504,13 @@
           "place": "ath",
           "alert": true,
           "leadMinutes": 300,
-          "description": "Vueling VY8101. Athens 11:20 → Barcelona Terminal 1 at 13:45 (local times). Be at Athens airport by ~09:20 and keep your boarding pass offline."
+          "description": "Vueling VY8101. Athens 11:20 → Barcelona Terminal 1 at 13:45 (local times). Be at Athens airport by ~09:20 and keep your boarding pass offline.",
+          "refs": [
+            {
+              "label": "Flight",
+              "value": "VY8101 · Vueling"
+            }
+          ]
         },
         {
           "id": "fri-arrive",
@@ -539,77 +545,99 @@
           "kind": "meal",
           "title": "Late lunch near the hotel",
           "place": "hotel",
-          "description": "Menú del día is usually served until ~16:00 on weekdays. Otherwise grab tapas and keep it light before the museum."
+          "description": "Menú del día is usually served until ~16:00 on weekdays. No rush today: your only booking is at 21:00."
         },
         {
-          "id": "fri-picasso",
-          "label": "17:00",
-          "start": "2026-10-09T17:00:00+02:00",
-          "end": "2026-10-09T18:30:00+02:00",
-          "kind": "fixed",
-          "title": "Picasso Museum",
-          "place": "picasso",
-          "booking": "picasso",
-          "alert": true,
-          "description": "Carrer de Montcada, El Born. ~1.5 h. Don't miss the Las Meninas series. From the hotel: FGC to Catalunya, then ~15 min walk (~35 min total), or a ~15 min taxi."
-        },
-        {
-          "id": "fri-born",
-          "label": "18:30 →",
-          "start": "2026-10-09T18:30:00+02:00",
-          "end": "2026-10-09T21:00:00+02:00",
+          "id": "fri-wander",
+          "label": "16:30 →",
+          "start": "2026-10-09T16:30:00+02:00",
+          "end": "2026-10-09T20:15:00+02:00",
           "kind": "free",
-          "title": "Free roam: El Born → the sea",
+          "title": "Free roam: Gothic Quarter → the sea",
           "stops": [
-            "santa-maria-mar",
-            "passeig-born",
-            "barceloneta",
-            "palau-musica"
+            "cathedral",
+            "placa-reial",
+            "barceloneta"
           ],
-          "description": "Santa Maria del Mar and Passeig del Born are 2–4 min from the museum. Drift down to Barceloneta for the sunset colours (~19:15, ~20 min walk). Catch the Palau de la Música façade another time if you run late."
+          "description": "FGC from Muntaner to Catalunya (~10 min). Wander the Gothic Quarter: the Cathedral cloister, Plaça Reial, then drift down to Barceloneta for the sunset colours (~19:20). Leave the beach by ~20:15: metro L4 Barceloneta → Passeig de Gràcia (~10 min, T-casual), then 3 min on foot."
+        },
+        {
+          "id": "fri-batllo",
+          "label": "21:00",
+          "start": "2026-10-09T21:00:00+02:00",
+          "end": "2026-10-09T22:15:00+02:00",
+          "kind": "fixed",
+          "title": "Casa Batlló: Night Visit",
+          "place": "casa-batllo",
+          "booking": "casa-batllo",
+          "alert": true,
+          "description": "Night Visit (Blue ticket), Passeig de Gràcia 43. Have the ticket from your email ready on your phone. The façade is lit up at night: look at it from across the street before you go in.",
+          "refs": [
+            {
+              "label": "Ticket",
+              "value": "Night Visit · Blue"
+            }
+          ]
         },
         {
           "id": "fri-dinner",
-          "label": "21:00",
-          "start": "2026-10-09T21:00:00+02:00",
+          "label": "22:15",
+          "start": "2026-10-09T22:15:00+02:00",
           "end": "2026-10-09T23:59:00+02:00",
           "kind": "meal",
-          "title": "Dinner in El Born",
-          "place": "el-born",
-          "description": "El Born is full of small tapas and wine bars. Dinner from 21:00, like the locals. Back to the hotel by FGC (runs until ~midnight on weekdays, later on Fri/Sat) or taxi (~15 min)."
+          "title": "Late dinner near Passeig de Gràcia",
+          "description": "Perfectly normal hour here. Lots of tapas bars on the streets between Passeig de Gràcia and Rambla de Catalunya. Back to the hotel: FGC from Provença to Muntaner (2 stops) or a ~10 min taxi."
         }
       ]
     },
     {
       "date": "2026-10-10",
       "name": "Saturday",
-      "theme": "Park Güell · a day in Gràcia · Bunkers sunset",
+      "theme": "Gràcia morning · Park Güell · Bunkers sunset",
       "events": [
         {
+          "id": "sat-gracia",
+          "label": "10:00 →",
+          "start": "2026-10-10T10:00:00+02:00",
+          "end": "2026-10-10T12:00:00+02:00",
+          "kind": "free",
+          "title": "Free roam: Gràcia morning",
+          "stops": [
+            "casa-vicens",
+            "placa-virreina",
+            "carrer-verdi"
+          ],
+          "description": "Gràcia is ~15 min on foot from the hotel. Casa Vicens (Gaudí's first house), coffee in Plaça de la Virreina, browse Carrer de Verdi. Leave by ~12:00 for the ~20 min uphill walk to Park Güell."
+        },
+        {
           "id": "sat-park-guell",
-          "label": "9:30",
-          "start": "2026-10-10T09:30:00+02:00",
-          "end": "2026-10-10T11:00:00+02:00",
+          "label": "12:30",
+          "start": "2026-10-10T12:30:00+02:00",
+          "end": "2026-10-10T14:00:00+02:00",
           "kind": "fixed",
           "title": "Park Güell",
           "place": "park-guell",
           "booking": "park-guell",
           "alert": true,
-          "description": "First slot, before the crowds. Dragon stairway, the wavy bench, the view. ~1.5 h."
+          "description": "Your slot is 12:30 (30 min grace), 2 tickets. Dragon stairway, the wavy bench, the view. ~1.5 h. Clear sky forecast, midday sun: sunglasses and water.",
+          "refs": [
+            {
+              "label": "Tickets",
+              "value": "2"
+            }
+          ]
         },
         {
-          "id": "sat-gracia",
-          "label": "11:30 →",
-          "start": "2026-10-10T11:30:00+02:00",
+          "id": "sat-lunch",
+          "label": "14:30 →",
+          "start": "2026-10-10T14:30:00+02:00",
           "end": "2026-10-10T17:00:00+02:00",
           "kind": "free",
-          "title": "Free roam: Gràcia",
+          "title": "Free roam: long lunch in Gràcia",
           "stops": [
-            "placa-virreina",
-            "carrer-verdi",
-            "casa-vicens"
+            "placa-sol"
           ],
-          "description": "Walk downhill into Barcelona's village-like neighbourhood. Coffee in Plaça de la Virreina, browse Carrer de Verdi, long lunch outside in a square. No agenda."
+          "description": "Walk back downhill and take a long lunch outside in a square. No agenda."
         },
         {
           "id": "sat-hotel",
@@ -647,7 +675,7 @@
     {
       "date": "2026-10-11",
       "name": "Sunday",
-      "theme": "Sagrada Família · Passeig de Gràcia · lazy Sunday",
+      "theme": "Sagrada Família · Sant Antoni vermut · Picasso · Montjuïc",
       "events": [
         {
           "id": "sun-sagrada",
@@ -661,44 +689,61 @@
           "description": "Queue at the Carrer de la Marina door. Doors 8:30, mass 9:00, ~1 h. Free. No photos during mass. Walk round the façades afterwards."
         },
         {
-          "id": "sun-batllo",
-          "label": "11:00",
-          "start": "2026-10-11T11:00:00+02:00",
+          "id": "sun-pdg",
+          "label": "10:30 →",
+          "start": "2026-10-11T10:30:00+02:00",
           "end": "2026-10-11T12:30:00+02:00",
-          "kind": "fixed",
-          "optional": true,
-          "title": "Casa Batlló (optional inside)",
-          "place": "casa-batllo",
-          "booking": "casa-batllo",
-          "alert": true,
+          "kind": "free",
+          "title": "Free roam: Passeig de Gràcia by day",
           "stops": [
-            "casa-batllo",
-            "la-pedrera"
+            "la-pedrera",
+            "casa-batllo"
           ],
-          "description": "~20 min walk down to Passeig de Gràcia. Inside ~1 h if booked; otherwise enjoy the façade and La Pedrera next door."
+          "description": "~20 min walk down from the Sagrada. See La Pedrera's façade and the Block of Discord (Casa Batlló, Amatller, Lleó Morera) in daylight after Friday's night visit."
         },
         {
           "id": "sun-vermut",
-          "label": "13:00 →",
-          "start": "2026-10-11T13:00:00+02:00",
-          "end": "2026-10-11T17:30:00+02:00",
+          "label": "12:30 →",
+          "start": "2026-10-11T12:30:00+02:00",
+          "end": "2026-10-11T15:30:00+02:00",
           "kind": "free",
-          "title": "Free roam: vermut & the Sunday feeling",
+          "title": "Free roam: vermut & lunch in Sant Antoni",
           "stops": [
-            "sant-antoni",
-            "parc-ciutadella",
-            "barceloneta"
+            "sant-antoni"
           ],
-          "description": "Vermouth, olives and chips before lunch (Sant Antoni or Poble Sec). Then Ciutadella Park or the sand — do nothing like everyone else."
+          "description": "Vermouth, olives and chips, then lunch. The Sunday book market around the Mercat de Sant Antoni runs until early afternoon. Leave by ~15:30 for the Picasso Museum (~25 min on foot, or metro)."
         },
         {
-          "id": "sun-hotel",
-          "label": "~17:30",
+          "id": "sun-picasso",
+          "label": "16:00",
+          "start": "2026-10-11T16:00:00+02:00",
+          "end": "2026-10-11T17:30:00+02:00",
+          "kind": "fixed",
+          "title": "Picasso Museum",
+          "place": "picasso",
+          "booking": "picasso",
+          "alert": true,
+          "description": "General admission, 2 tickets, your slot is 16:00. Carrer de Montcada, El Born. ~1.5 h. Don't miss the Las Meninas series.",
+          "refs": [
+            {
+              "label": "Tickets",
+              "value": "General admission ×2 · €24"
+            }
+          ]
+        },
+        {
+          "id": "sun-born",
+          "label": "17:30 →",
           "start": "2026-10-11T17:30:00+02:00",
-          "end": "2026-10-11T18:45:00+02:00",
-          "kind": "logistics",
-          "title": "Hotel, change",
-          "place": "hotel"
+          "end": "2026-10-11T18:30:00+02:00",
+          "kind": "free",
+          "title": "Free roam: El Born",
+          "stops": [
+            "santa-maria-mar",
+            "passeig-born",
+            "palau-musica"
+          ],
+          "description": "Santa Maria del Mar and Passeig del Born are 2–4 min from the museum, the Palau de la Música façade ~8 min. Leave by ~18:30 for Montjuïc."
         },
         {
           "id": "sun-montjuic",
@@ -713,7 +758,7 @@
           ],
           "alert": true,
           "alertPlace": "mnac",
-          "description": "Sunset from the MNAC steps, then walk down to Carrer de Blai for a cheap pintxos crawl."
+          "description": "Taxi (~15 min) or metro via Espanya (~25 min, then the escalators) to the MNAC steps for the sunset (~19:16). Then walk down to Carrer de Blai for a cheap pintxos crawl."
         }
       ]
     },
@@ -794,7 +839,13 @@
           "place": "airport",
           "alert": true,
           "leadMinutes": 300,
-          "description": "Aegean A3743 from Terminal 1, 18:10 → Athens 21:55 (local time). Light fare: no checked bag, so check the cabin-bag size before you pack. Check in online in the Aegean app."
+          "description": "Aegean A3743 from Terminal 1, 18:10 → Athens 21:55 (local time). Light fare: no checked bag, so check the cabin-bag size before you pack. Check in online in the Aegean app.",
+          "refs": [
+            {
+              "label": "Flight",
+              "value": "A3743 · Aegean · Light fare"
+            }
+          ]
         }
       ]
     }
@@ -807,33 +858,52 @@
       "groups": [
         {
           "id": "book-now",
-          "title": "Book now",
-          "tone": "urgent",
+          "title": "Booked",
+          "tone": "calm",
           "items": [
             {
               "id": "park-guell",
               "title": "Park Güell",
-              "price": "€18",
+              "price": "€18 ×2",
               "url": "https://parkguell.barcelona",
               "event": "sat-park-guell",
-              "note": "Timed slot, Saturday 9:30. Long weekend, so slots go fast. You get 30 min grace after your slot time."
+              "note": "Booked: Sat 10 Oct, 12:30 slot (30 min grace), 2 tickets.",
+              "done": true,
+              "refs": [
+                {
+                  "label": "Tickets",
+                  "value": "2"
+                }
+              ]
             },
             {
               "id": "picasso",
               "title": "Picasso Museum",
-              "price": "€14",
+              "price": "€12 ×2",
               "url": "https://museupicassobcn.cat",
-              "event": "fri-picasso",
-              "note": "€14 online (€15 at the door). Book the 17:00 slot on Friday: you land at 13:45. Daily visitor cap, so book a timed slot."
+              "event": "sun-picasso",
+              "note": "Booked: Sun 11 Oct, 16:00, general admission ×2 (€24).",
+              "done": true,
+              "refs": [
+                {
+                  "label": "Tickets",
+                  "value": "General admission ×2 · €24"
+                }
+              ]
             },
             {
               "id": "casa-batllo",
               "title": "Casa Batlló",
-              "optional": true,
-              "price": "from €29",
               "url": "https://casabatllo.es",
-              "event": "sun-batllo",
-              "note": "From €29 (Blue); the rooftop needs Silver, from €34. Prices rise closer to the date."
+              "event": "fri-batllo",
+              "note": "Booked: Night Visit (Blue), Fri 9 Oct 21:00, Passeig de Gràcia 43.",
+              "done": true,
+              "refs": [
+                {
+                  "label": "Ticket",
+                  "value": "Night Visit · Blue"
+                }
+              ]
             }
           ]
         },
@@ -1012,13 +1082,6 @@
       "until": "2026-10-11T08:15:00+02:00"
     },
     {
-      "id": "sun-layer",
-      "title": "Light layer",
-      "text": "Montjuïc gets cool after sunset.",
-      "from": "2026-10-11T17:30:00+02:00",
-      "until": "2026-10-11T19:00:00+02:00"
-    },
-    {
       "id": "mon-sagrada",
       "title": "Got a Sagrada ticket?",
       "text": "If one turned up, this morning is its slot.",
@@ -1043,6 +1106,20 @@
       "until": "2026-10-12T15:00:00+02:00",
       "unlessChecked": "a3-checkin",
       "snoozeHours": 6
+    },
+    {
+      "id": "sun-layer",
+      "title": "Light layer",
+      "text": "Montjuïc gets cool after sunset, and you won't pass the hotel today.",
+      "from": "2026-10-11T07:30:00+02:00",
+      "until": "2026-10-11T08:15:00+02:00"
+    },
+    {
+      "id": "fri-batllo-go",
+      "title": "Casa Batlló at 21:00",
+      "text": "Leave Barceloneta by ~20:15: metro L4 to Passeig de Gràcia.",
+      "from": "2026-10-09T19:45:00+02:00",
+      "until": "2026-10-09T20:45:00+02:00"
     }
   ],
   "budget": {
@@ -1060,12 +1137,12 @@
       {
         "item": "Park Güell",
         "cost": "€18",
-        "note": "Book online"
+        "note": "Booked · Sat 12:30"
       },
       {
         "item": "Picasso Museum",
-        "cost": "€14",
-        "note": "Book online"
+        "cost": "€12",
+        "note": "Booked · Sun 16:00"
       },
       {
         "item": "Sagrada Família",
@@ -1074,8 +1151,8 @@
       },
       {
         "item": "Casa Batlló",
-        "cost": "€0 – €34+",
-        "note": "Free from outside · €29 Blue · €34+ with rooftop"
+        "cost": "Blue",
+        "note": "Booked · Night Visit, Fri 21:00"
       },
       {
         "item": "Tourist tax",
@@ -1085,7 +1162,7 @@
     ],
     "total": {
       "item": "Core total",
-      "cost": "≈ €80",
+      "cost": "≈ €76 + Casa Batlló",
       "note": "Aerobús + T-casual + Park Güell + Picasso + tax"
     }
   },
@@ -1108,7 +1185,7 @@
     },
     {
       "title": "Museums & Mondays",
-      "text": "Most museums close on Mondays — that's why Picasso is on Friday."
+      "text": "Most museums close on Mondays, which is why Picasso is on Sunday."
     },
     {
       "title": "Pickpockets",

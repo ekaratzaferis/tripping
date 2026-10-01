@@ -50,7 +50,9 @@ export const settings = {
 export const now = () => new Date(Date.now() + (settings.get().simOffset || 0));
 
 /* ---------- per-trip state ---------- */
-export function tripState(tripId) {
+// `doneByDefault`: checklist item ids the trip file marks as already done
+// (e.g. bookings made); a tick on this device still overrides them.
+export function tripState(tripId, doneByDefault = {}) {
   const k = (name) => `${tripId}:${name}`;
   const get = (name, def) => read(k(name), def);
   const set = (name, val, silent) => {
@@ -63,8 +65,14 @@ export function tripState(tripId) {
     get,
     set,
     // checklists
-    checked: (id) => !!get('checks', {})[id],
-    toggle: (id, v) => patch('checks', (c) => ({ ...c, [id]: v ?? !c[id] })),
+    checked: (id) => {
+      const c = get('checks', {});
+      return id in c ? !!c[id] : !!doneByDefault[id];
+    },
+    toggle: (id, v) => patch('checks', (c) => {
+      const cur = id in c ? !!c[id] : !!doneByDefault[id];
+      return { ...c, [id]: v ?? !cur };
+    }),
     customItems: () => get('custom', []), // [{id, list, group, title, note}]
     addItem: (item) => set('custom', [...get('custom', []), item]),
     removeItem: (id) => {

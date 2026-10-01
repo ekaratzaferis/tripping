@@ -1,7 +1,7 @@
 // Checklists: things to prebook and things to pack. Items come from the trip
 // config; ticks, extra items and removed items live in localStorage.
 import { esc, uid, fmtDate, fmtTime } from '../util.js';
-import { icon } from '../ui.js';
+import { icon, toast } from '../ui.js';
 
 export function createListsView(root, ctx) {
   const { trip, ts } = ctx;
@@ -59,6 +59,7 @@ export function createListsView(root, ctx) {
               <div class="check-main" data-toggle="${esc(i.id)}">
                 <div class="check-title">${esc(i.title)}${i.optional ? ' <span class="pill">optional</span>' : ''}${i.price ? ` <span class="price">${esc(i.price)}</span>` : ''}</div>
                 ${i.note ? `<div class="check-note">${esc(i.note)}</div>` : ''}
+                ${(i.refs || []).map((r) => `<button class="ref-inline" data-copy="${esc(r.value)}">${esc(r.label)}: <b>${esc(r.value)}</b></button>`).join('')}
                 ${ev ? `<div class="check-for">${icon('clock')} for ${esc(fmtDate(ev.startD, tz))} ${esc(fmtTime(ev.startD, tz))}</div>` : ''}
               </div>
               <div class="check-actions">
@@ -82,6 +83,11 @@ export function createListsView(root, ctx) {
   }
 
   root.addEventListener('click', (e) => {
+    const c = e.target.closest('[data-copy]');
+    if (c) {
+      navigator.clipboard?.writeText(c.dataset.copy).then(() => toast('Copied'), () => toast(c.dataset.copy));
+      return;
+    }
     const t = e.target.closest('[data-list],[data-toggle],[data-remove],[data-restore]');
     if (!t) return;
     if (t.dataset.list) { listId = t.dataset.list; render(); return; }
