@@ -3,6 +3,7 @@
 import { esc, uid, fmtDate, fmtTime } from '../util.js';
 import { icon, toast } from '../ui.js';
 import { placesPanelHtml, wirePlacesPanel } from './places.js';
+import { openPlace } from './details.js';
 
 export function createListsView(root, ctx) {
   // Only touch the DOM when the markup changed, so a tap is never lost to a redraw.
@@ -81,6 +82,7 @@ export function createListsView(root, ctx) {
                 ${ev ? `<div class="check-for">${icon('clock')} for ${esc(fmtDate(ev.startD, tz))} ${esc(fmtTime(ev.startD, tz))}</div>` : ''}
               </div>
               <div class="check-actions">
+                ${i.place && trip.places[i.place] ? `<button class="icon-btn" data-open-place="${esc(i.place)}" aria-label="Show place">${icon('pin')}</button>` : ''}
                 ${i.url ? `<a class="icon-btn" href="${esc(i.url)}" target="_blank" rel="noopener" aria-label="Open website">${icon('external')}</a>` : ''}
                 <button class="icon-btn subtle" data-remove="${esc(i.id)}" aria-label="Remove">${icon('trash')}</button>
               </div>
@@ -101,6 +103,8 @@ export function createListsView(root, ctx) {
   }
 
   root.addEventListener('click', (e) => {
+    const op = e.target.closest('[data-open-place]');
+    if (op) return openPlace(ctx, op.dataset.openPlace);
     const c = e.target.closest('[data-copy]');
     if (c) {
       navigator.clipboard?.writeText(c.dataset.copy).then(() => toast('Copied'), () => toast(c.dataset.copy));

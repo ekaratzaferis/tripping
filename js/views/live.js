@@ -133,9 +133,9 @@ export function createLiveView(root, ctx) {
     const NEAR_M = 700;
     const meNear = state.pos && state.nearCity ? state.pos : null;
     const all = Object.entries(trip.places)
-      .filter(([id, p]) => !shown.has(id) && p.category !== 'airport' && (s.showAllPlaces || (meNear && distance(meNear, p) <= NEAR_M)))
+      .filter(([id, p]) => !shown.has(id) && p.category !== 'airport' && (s.showAllPlaces || p.must || (meNear && distance(meNear, p) <= NEAR_M)))
       .map(([id, p]) => ({
-        ...p, id, z: 1, title: p.name, html: pinHtml({ category: p.category, small: true }), onClick: () => openPlace(ctx, id),
+        ...p, id, z: p.must ? 5 : 1, title: p.name, html: pinHtml({ category: p.category, small: true, must: p.must }), onClick: () => openPlace(ctx, id),
       }));
     map.setMarkers('all', all);
 

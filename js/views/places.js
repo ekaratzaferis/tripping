@@ -151,7 +151,7 @@ export function placesBodyHtml(ctx, filter = '') {
       const c = cat(p.category);
       return `<div class="place-row" data-p-open="${esc(p.id)}">
         <span class="place-emoji" style="--accent:${c.color}">${c.emoji}</span>
-        <span class="grow"><b>${esc(p.name)}</b><small>${esc(c.label)}${p.dist != null ? ` · ${fmtDist(p.dist)}` : ''}${p.custom ? ' · added by you' : p.edited ? ' · edited' : ''}${p.note ? ` · ${esc(p.note.slice(0, 40))}${p.note.length > 40 ? '…' : ''}` : ''}</small></span>
+        <span class="grow"><b>${p.must ? '⭐ ' : ''}${esc(p.name)}</b><small>${esc(c.label)}${p.dist != null ? ` · ${fmtDist(p.dist)}` : ''}${p.custom ? ' · added by you' : p.edited ? ' · edited' : ''}${p.note ? ` · ${esc(p.note.slice(0, 40))}${p.note.length > 40 ? '…' : ''}` : ''}</small></span>
         <button class="icon-btn" data-p-edit="${esc(p.id)}" aria-label="Edit ${esc(p.name)}">${icon('edit')}</button>
       </div>`;
     }).join('')}</div>

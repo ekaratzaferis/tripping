@@ -82,11 +82,12 @@ function skipUnchanged(api) {
 export function userHtml() {
   return `<div class="mk-me"><div class="mk-me-halo"></div><div class="mk-me-heading"></div><div class="mk-me-dot"></div></div>`;
 }
-export function pinHtml({ category, label, active, done, small, emoji }) {
+export function pinHtml({ category, label, active, done, small, emoji, must }) {
   const c = cat(category);
   const cls = ['mk-pin', active && 'is-active', done && 'is-done', small && 'is-small'].filter(Boolean).join(' ');
   return `<div class="${cls}" style="--pin:${c.color}">
     <div class="mk-pin-body"><span>${esc(emoji || label || c.emoji)}</span></div>
+    ${must ? '<div class="mk-must">★</div>' : ''}
     ${active ? '<div class="mk-pin-pulse"></div>' : ''}
   </div>`;
 }

@@ -578,6 +578,156 @@
           "~2 km west of the hotel. Usually closed Mondays."
         ]
       }
+    },
+    "eddies": {
+      "radius": 40,
+      "name": "Fast Eddie's",
+      "category": "food",
+      "lat": 41.38592,
+      "lng": 2.17997,
+      "must": true,
+      "address": "Carrer dels Carders 6, El Born"
+    },
+    "five-guys": {
+      "radius": 40,
+      "name": "Five Guys (Passeig de Gràcia)",
+      "category": "food",
+      "lat": 41.39032,
+      "lng": 2.16769,
+      "must": true,
+      "address": "Passeig de Gràcia 28",
+      "tips": {
+        "goodToKnow": [
+          "A 5-min walk from Casa Batlló: an easy late bite after Friday's night visit."
+        ]
+      }
+    },
+    "joncake": {
+      "radius": 40,
+      "name": "Joncake",
+      "category": "sweets",
+      "lat": 41.38628,
+      "lng": 2.18124,
+      "must": true,
+      "address": "Carrer dels Assaonadors, El Born",
+      "tips": {
+        "goodToKnow": [
+          "2 min from the Picasso Museum: before or after Sunday's 16:00 visit."
+        ]
+      }
+    },
+    "cinnamood": {
+      "radius": 40,
+      "name": "Cinnamood",
+      "category": "cafe",
+      "lat": 41.38365,
+      "lng": 2.18105,
+      "address": "Carrer de l'Argenteria 61, El Born",
+      "tips": {
+        "goodToKnow": [
+          "Cinnamon rolls and specialty coffee, next to Santa Maria del Mar."
+        ]
+      }
+    },
+    "demasie-born": {
+      "radius": 40,
+      "name": "Demasié (El Born)",
+      "category": "sweets",
+      "lat": 41.3834,
+      "lng": 2.18164,
+      "address": "Plaça de Santa Maria 7"
+    },
+    "demasie-gracia": {
+      "radius": 40,
+      "name": "Demasié (Gràcia)",
+      "category": "sweets",
+      "lat": 41.40025,
+      "lng": 2.15963,
+      "address": "Carrer del Torrent de l'Olla 62"
+    },
+    "xurreria-trebol": {
+      "radius": 40,
+      "name": "Xurreria Trébol",
+      "category": "sweets",
+      "lat": 41.39787,
+      "lng": 2.16093,
+      "address": "Carrer de Còrsega 341",
+      "tips": {
+        "goodToKnow": [
+          "Churros and hot chocolate."
+        ]
+      }
+    },
+    "coco-social": {
+      "radius": 40,
+      "name": "Coco Social House",
+      "category": "cafe",
+      "lat": 41.40569,
+      "lng": 2.15172,
+      "address": "Carrer de Pérez Galdós 36, Gràcia",
+      "tips": {
+        "goodToKnow": [
+          "Brunch café in Gràcia, a few minutes from Casa Vicens: fits Saturday morning."
+        ]
+      }
+    },
+    "parking-pizza": {
+      "radius": 40,
+      "name": "Parking Pizza",
+      "category": "food",
+      "lat": 41.3938,
+      "lng": 2.15141,
+      "address": "Carrer de Londres 98",
+      "tips": {
+        "goodToKnow": [
+          "~400 m from the hotel."
+        ]
+      }
+    },
+    "finestres": {
+      "radius": 40,
+      "name": "Llibreria Finestres",
+      "category": "books",
+      "lat": 41.38897,
+      "lng": 2.16495,
+      "address": "Carrer de la Diputació 249"
+    },
+    "backstory": {
+      "radius": 40,
+      "name": "Backstory",
+      "category": "books",
+      "lat": 41.3846,
+      "lng": 2.18338,
+      "address": "Carrer del Rec, El Born"
+    },
+    "elocuente": {
+      "radius": 40,
+      "name": "Elocuente",
+      "category": "cafe",
+      "lat": 41.39436,
+      "lng": 2.16707,
+      "address": "Carrer de Roger de Llúria, Eixample"
+    },
+    "la-central": {
+      "radius": 40,
+      "name": "La Central (bookshop)",
+      "category": "books",
+      "lat": 41.39205,
+      "lng": 2.16,
+      "address": "Carrer de Mallorca 237"
+    },
+    "jac": {
+      "radius": 40,
+      "name": "Jaç Hi-Fi Café",
+      "category": "cafe",
+      "lat": 41.39847,
+      "lng": 2.16824,
+      "address": "Avinguda Diagonal 335",
+      "tips": {
+        "goodToKnow": [
+          "Specialty coffee and a Japanese-style vinyl listening bar."
+        ]
+      }
     }
   },
   "days": [
@@ -1101,6 +1251,118 @@
               "id": "adapter",
               "title": "Plug adapter (Type C/F)",
               "note": "Only if you're coming from outside the EU."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eat",
+      "title": "Eat & shop",
+      "icon": "bag",
+      "groups": [
+        {
+          "id": "must-try",
+          "title": "⭐ Must try",
+          "tone": "urgent",
+          "items": [
+            {
+              "id": "eat-eddies",
+              "title": "Fast Eddie's",
+              "place": "eddies",
+              "note": "Carrer dels Carders 6, El Born"
+            },
+            {
+              "id": "eat-five-guys",
+              "title": "Five Guys (Passeig de Gràcia)",
+              "place": "five-guys",
+              "note": "Passeig de Gràcia 28"
+            },
+            {
+              "id": "eat-joncake",
+              "title": "Joncake",
+              "place": "joncake",
+              "note": "Carrer dels Assaonadors, El Born"
+            }
+          ]
+        },
+        {
+          "id": "coffee-food",
+          "title": "Coffee & food",
+          "tone": "calm",
+          "items": [
+            {
+              "id": "eat-cinnamood",
+              "title": "Cinnamood",
+              "place": "cinnamood",
+              "note": "Carrer de l'Argenteria 61, El Born"
+            },
+            {
+              "id": "eat-demasie-born",
+              "title": "Demasié (El Born)",
+              "place": "demasie-born",
+              "note": "Plaça de Santa Maria 7"
+            },
+            {
+              "id": "eat-demasie-gracia",
+              "title": "Demasié (Gràcia)",
+              "place": "demasie-gracia",
+              "note": "Carrer del Torrent de l'Olla 62"
+            },
+            {
+              "id": "eat-xurreria-trebol",
+              "title": "Xurreria Trébol",
+              "place": "xurreria-trebol",
+              "note": "Carrer de Còrsega 341"
+            },
+            {
+              "id": "eat-coco-social",
+              "title": "Coco Social House",
+              "place": "coco-social",
+              "note": "Carrer de Pérez Galdós 36, Gràcia"
+            },
+            {
+              "id": "eat-parking-pizza",
+              "title": "Parking Pizza",
+              "place": "parking-pizza",
+              "note": "Carrer de Londres 98"
+            },
+            {
+              "id": "eat-elocuente",
+              "title": "Elocuente",
+              "place": "elocuente",
+              "note": "Carrer de Roger de Llúria, Eixample"
+            },
+            {
+              "id": "eat-jac",
+              "title": "Jaç Hi-Fi Café",
+              "place": "jac",
+              "note": "Avinguda Diagonal 335"
+            }
+          ]
+        },
+        {
+          "id": "books-shops",
+          "title": "Books & shops",
+          "tone": "calm",
+          "items": [
+            {
+              "id": "eat-finestres",
+              "title": "Llibreria Finestres",
+              "place": "finestres",
+              "note": "Carrer de la Diputació 249"
+            },
+            {
+              "id": "eat-backstory",
+              "title": "Backstory",
+              "place": "backstory",
+              "note": "Carrer del Rec, El Born"
+            },
+            {
+              "id": "eat-la-central",
+              "title": "La Central (bookshop)",
+              "place": "la-central",
+              "note": "Carrer de Mallorca 237"
             }
           ]
         }
