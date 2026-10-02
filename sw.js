@@ -1,6 +1,6 @@
 // Offline support: app shell is cached up front, map tiles and CDN assets are
 // cached as you browse (so areas you've looked at work in the metro).
-const VERSION = 'triparw-v7';
+const VERSION = 'triparw-v8';
 const SHELL = [
   './', 'index.html', 'css/app.css', 'manifest.webmanifest', 'icon.svg',
   'js/app.js', 'js/util.js', 'js/store.js', 'js/trip.js', 'js/geo.js', 'js/map.js', 'js/engine.js',

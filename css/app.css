@@ -201,6 +201,11 @@ input:focus { outline: 2px solid color-mix(in srgb, var(--blue) 35%, transparent
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: .2s;
 }
 .seg button .ic { width: 16px; height: 16px; }
+.seg button { min-width: 0; white-space: nowrap; }
+/* Lists has 4 tabs: on phones show them as a 2×2 grid instead of overflowing. */
+@media (max-width: 560px) {
+  .seg.big { display: grid; grid-template-columns: 1fr 1fr; }
+}
 .seg button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0, 0, 0, .1); }
 .seg button small { opacity: .6; font-weight: 600; }
 .count { background: var(--red); color: #fff; border-radius: 9px; font-size: 10px; padding: 1px 6px; }
