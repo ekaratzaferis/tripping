@@ -62,6 +62,22 @@ function normalize(raw) {
   return trip;
 }
 
+// Merge the user's place edits (stored on this device) over the trip's
+// places: edited fields win, `hidden` removes a place, `custom` adds one.
+export function applyPlaceEdits(trip, edits = {}) {
+  trip.basePlaces ||= trip.places;
+  const out = {};
+  for (const [id, p] of Object.entries(trip.basePlaces)) {
+    const e = edits[id];
+    if (e?.hidden) continue;
+    out[id] = e ? { ...p, ...e, edited: true } : p;
+  }
+  for (const [id, e] of Object.entries(edits)) {
+    if (e.custom && !e.hidden && !trip.basePlaces[id]) out[id] = { radius: 60, ...e };
+  }
+  trip.places = out;
+}
+
 export function resolvePlace(trip, id) {
   if (!id) return null;
   if (id === 'hotel') {

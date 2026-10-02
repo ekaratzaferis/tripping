@@ -96,7 +96,7 @@ export function tripState(tripId, doneByDefault = {}) {
     }), true),
     // snoozed alerts & sent notifications
     snoozedUntil: (key) => get('snooze', {})[key] || 0,
-    snooze: (key, until) => patch('snooze', (s) => ({ ...s, [key]: until })),
+    snooze: (key, until, silent) => patch('snooze', (s) => ({ ...s, [key]: until }), silent),
     wasNotified: (key) => !!get('notified', {})[key],
     markNotified: (key) => patch('notified', (s) => ({ ...s, [key]: Date.now() }), true),
     // in-app navigation target

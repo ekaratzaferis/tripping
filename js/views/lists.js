@@ -2,8 +2,11 @@
 // config; ticks, extra items and removed items live in localStorage.
 import { esc, uid, fmtDate, fmtTime } from '../util.js';
 import { icon, toast } from '../ui.js';
+import { placesPanelHtml, wirePlacesPanel } from './places.js';
 
 export function createListsView(root, ctx) {
+  // Only touch the DOM when the markup changed, so a tap is never lost to a redraw.
+  const setPage = (html) => { if (root._html === html) return false; root._html = html; root.innerHTML = html; return true; };
   const { trip, ts } = ctx;
   let listId = trip.checklists[0]?.id;
   let focusGroup = null;
@@ -31,18 +34,33 @@ export function createListsView(root, ctx) {
       <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle">${Math.round(f * 100)}%</text></svg>`;
   }
 
+  let placeFilter = '';
+  const tabsHtml = (activeId) => `<div class="seg big">${trip.checklists.map((l) => {
+    const p = progress(l);
+    return `<button data-list="${l.id}" class="${l.id === activeId ? 'on' : ''}">${icon(l.icon || 'list')} ${esc(l.title)} <small>${p.done}/${p.total}</small></button>`;
+  }).join('')}<button data-list="places" class="${activeId === 'places' ? 'on' : ''}">${icon('pin')} Places</button></div>`;
+
+  function renderPlaces() {
+    const scroll = root.scrollTop;
+    const replaced = setPage(`<div class="page">
+      <header class="page-head"><h1>Lists</h1>${tabsHtml('places')}</header>
+      <div id="places-panel">${placesPanelHtml(ctx, placeFilter)}</div>
+    </div>`);
+    // Wire only freshly created DOM, or handlers would stack up.
+    if (replaced) wirePlacesPanel(root.querySelector('#places-panel'), ctx, (v) => { placeFilter = v; });
+    root.scrollTop = scroll;
+  }
+
   function render() {
+    if (listId === 'places') return renderPlaces();
     const list = trip.checklists.find((l) => l.id === listId) || trip.checklists[0];
     if (!list) { root.innerHTML = '<div class="page"><p>No checklists in this trip.</p></div>'; return; }
     const scroll = root.scrollTop;
     const tz = trip.timezone;
-    root.innerHTML = `<div class="page">
+    setPage(`<div class="page">
       <header class="page-head">
-        <h1>Checklists</h1>
-        <div class="seg big">${trip.checklists.map((l) => {
-          const p = progress(l);
-          return `<button data-list="${l.id}" class="${l.id === list.id ? 'on' : ''}">${icon(l.icon || 'list')} ${esc(l.title)} <small>${p.done}/${p.total}</small></button>`;
-        }).join('')}</div>
+        <h1>Lists</h1>
+        ${tabsHtml(list.id)}
       </header>
       <div class="list-summary">${ring(progress(list))}
         <div><b>${progress(list).done === progress(list).total ? 'All done. Nice!' : `${progress(list).total - progress(list).done} to go`}</b>
@@ -74,7 +92,7 @@ export function createListsView(root, ctx) {
           </form>
         </section>`).join('')}
       ${Object.keys(ts.hidden()).length ? `<button class="link-btn center" data-restore>Restore removed items (${Object.keys(ts.hidden()).length})</button>` : ''}
-    </div>`;
+    </div>`);
     root.scrollTop = scroll;
     if (focusGroup) {
       root.querySelector(`form[data-group="${focusGroup}"] input`)?.focus();

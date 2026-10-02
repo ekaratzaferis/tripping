@@ -7,6 +7,8 @@ import { openEvent, openPlace, KIND_LABEL } from './details.js';
 import { activeDayKey } from '../engine.js';
 
 export function createPlanView(root, ctx) {
+  // Only touch the DOM when the markup changed, so a tap is never lost to a redraw.
+  const setPage = (html) => { if (root._html !== html) { root._html = html; root.innerHTML = html; } };
   const { trip, ts } = ctx;
   const tz = trip.timezone;
   let day = null;
@@ -16,7 +18,7 @@ export function createPlanView(root, ctx) {
     day ||= activeDayKey(trip, now);
     const d = trip.days.find((x) => x.date === day) || trip.days[0];
     const scroll = root.scrollTop;
-    root.innerHTML = `
+    setPage(`
       <header class="hero" style="--mosaic:${mosaicUrl({ seed: 11 })}">
         <div class="hero-inner">
           <div class="eyebrow light">${esc(trip.kicker || '')}</div>
@@ -44,7 +46,7 @@ export function createPlanView(root, ctx) {
         <div class="legend"><span class="lg fixed"></span> Fixed: booked or timed, keep these <span class="lg free"></span> Free roam: suggestions, follow your mood</div>
 
         ${guideHtml()}
-      </div>`;
+      </div>`);
     root.scrollTop = scroll;
   }
 

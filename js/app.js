@@ -1,10 +1,10 @@
 // App bootstrap: loads the trip, wires views to the router, and keeps the
 // live state fresh (clock tick, GPS updates, storage changes).
-import { loadTrip } from './trip.js';
+import { loadTrip, applyPlaceEdits } from './trip.js';
 import { settings, tripState, tripOverride, now } from './store.js';
 import { geo } from './geo.js';
 import { computeState, recordVisits } from './engine.js';
-import { bus, $, $$, esc, cat } from './util.js';
+import { bus, $, $$, esc, cat, distance, fmtDist } from './util.js';
 import { icon, toast } from './ui.js';
 import { restyleMaps } from './map.js';
 import { createLiveView } from './views/live.js';
@@ -34,20 +34,25 @@ async function main() {
   document.title = `${trip.title} · Triparw`;
   const doneByDefault = Object.fromEntries(Object.values(trip.itemById).filter((i) => i.done).map((i) => [i.id, true]));
   const ts = tripState(trip.id, doneByDefault);
+  applyPlaceEdits(trip, ts.get('placeEdits', {}));
   let current = null;
 
   const ctx = {
     trip, ts, state: null, now, picking: null,
     go: (id) => { location.hash = `#/${id}`; },
-    pickOnMap(kind) {
+    pickOnMap(kind, onPick) {
       ctx.picking = kind;
+      ctx.onPick = onPick;
       ctx.go('live');
       document.body.dataset.picking = kind;
-      toast(kind === 'hotel' ? 'Tap the map where your hotel is' : 'Tap the map to put yourself there', 6000);
+      const msg = { hotel: 'Tap the map where your hotel is', place: 'Tap the map where the place is' }[kind] || 'Tap the map to put yourself there';
+      toast(msg, 6000);
     },
     handleMapPick(p) {
       if (!ctx.picking) return;
-      if (ctx.picking === 'hotel') {
+      if (ctx.picking === 'place') {
+        ctx.onPick?.(p);
+      } else if (ctx.picking === 'hotel') {
         const h = settings.get().hotel || {};
         settings.set({ hotel: { name: h.name || 'Hotel', lat: p.lat, lng: p.lng } });
         toast('Hotel location saved');
@@ -72,6 +77,7 @@ async function main() {
 
   /* ---------- state ---------- */
   let lastHere = null;
+  let lastHeadsUp = 0;
   function recompute() {
     const pos = geo.pos;
     const t = now();
@@ -85,6 +91,18 @@ async function main() {
       toast(`${cat(s.here.category).emoji} You're at ${s.here.name}. Tap 💡 for tips.`, 5000);
     }
     lastHere = hereId;
+    // Walking past a place of interest → a gentle heads-up, once per place per day.
+    if (pos && s.nearCity && t.getTime() - lastHeadsUp > 2 * 60000) {
+      for (const [id, p] of Object.entries(trip.places)) {
+        if (id === hereId || ['neighbourhood', 'transport', 'airport'].includes(p.category)) continue;
+        const d = distance(pos, p);
+        if (d > 150 || d <= (p.radius || 70) || ts.snoozedUntil(`near:${id}`) > t.getTime()) continue;
+        ts.snooze(`near:${id}`, t.getTime() + 12 * 36e5, true);
+        lastHeadsUp = t.getTime();
+        toast(`${cat(p.category).emoji} ${p.name} is ${fmtDist(d)} away`, 4500);
+        break;
+      }
+    }
     // Reached a place I asked to be guided to → stop guiding.
     const manual = ts.target();
     if (manual && s.atTarget && s.target?.id === manual.placeId) {
@@ -154,7 +172,8 @@ async function main() {
     requestAnimationFrame(() => { rafPending = false; recompute(); });
   };
   bus.on('position', schedule);
-  bus.on('store', () => {
+  bus.on('store', (name) => {
+    if (name === 'placeEdits') applyPlaceEdits(trip, ts.get('placeEdits', {}));
     schedule();
     if (current === 'plan' || current === 'lists') views[current].update();
   });

@@ -25,6 +25,7 @@ const PATHS = {
   ticket: '<path d="M3 7.5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2V10a2 2 0 0 0 0 4v2.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V14a2 2 0 0 0 0-4z"/><path d="M13.5 5.5v2M13.5 16.5v2M13.5 11v2"/>',
   bag: '<path d="M5.5 7.5h13l1 13.5h-15z"/><path d="M9 7.5V6a3 3 0 0 1 6 0v1.5"/>',
   chevron: '<path d="m9 18 6-6-6-6"/>',
+  edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
   rec: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 16v-4.5M12 8h.01"/>',
   compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',

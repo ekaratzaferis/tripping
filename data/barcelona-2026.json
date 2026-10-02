@@ -65,7 +65,7 @@
           "Aerobús A1 ends and starts here. A1 is the Terminal 1 bus, which is what you need both ways.",
           "The airport-bound stop isn't the same as the arrival drop-off. Check aerobusbarcelona.es for the exact spot.",
           "FGC Catalunya station is on the square: take L6, S1 or S2 to Muntaner for the hotel (not L7, it doesn't stop there).",
-          "The T-casual card works on FGC and metro, but NOT on the Aerobús."
+          "The T-usual works on FGC and metro, but NOT on the Aerobús."
         ]
       }
     },
@@ -293,7 +293,7 @@
       }
     },
     "la-pedrera": {
-      "name": "La Pedrera (Casa Milà)",
+      "name": "Casa Milà (La Pedrera)",
       "category": "landmark",
       "lat": 41.3953,
       "lng": 2.1619,
@@ -481,7 +481,101 @@
           "~7 min walk from the hotel, entrance on Via Augusta.",
           "To the centre: any train towards Plaça Catalunya, 4 stops (~8 min).",
           "From the centre: L6, S1 or S2 stop here. L7 does not.",
-          "T-casual valid (zone 1)."
+          "T-usual valid (zone 1)."
+        ]
+      }
+    },
+    "gothic-quarter": {
+      "name": "Gothic Quarter",
+      "category": "neighbourhood",
+      "lat": 41.3838,
+      "lng": 2.1745,
+      "radius": 250,
+      "tips": {
+        "dontMiss": [
+          "The narrow medieval lanes around the Cathedral and Plaça Sant Felip Neri.",
+          "The Bishop's Bridge on Carrer del Bisbe."
+        ],
+        "goodToKnow": [
+          "Best explored without a map: just wander.",
+          "Pickpockets: front pocket or zipped bag."
+        ]
+      }
+    },
+    "kiss-mural": {
+      "name": "The Kiss mural",
+      "category": "landmark",
+      "lat": 41.3852,
+      "lng": 2.1748,
+      "radius": 40,
+      "tips": {
+        "dontMiss": [
+          "'El món neix en cada besada' (The world begins with every kiss): a photomosaic made of thousands of small photos."
+        ],
+        "goodToKnow": [
+          "Plaça d'Isidre Nonell, a 2-min walk from the Cathedral. Mornings are quieter for photos."
+        ]
+      }
+    },
+    "el-raval": {
+      "name": "El Raval",
+      "category": "neighbourhood",
+      "lat": 41.3798,
+      "lng": 2.1687,
+      "radius": 300,
+      "tips": {
+        "dontMiss": [
+          "MACBA's white façade and the skaters in its square.",
+          "Rambla del Raval and Botero's big cat sculpture."
+        ],
+        "goodToKnow": [
+          "Lively and multicultural; keep an eye on your bag, especially at night."
+        ]
+      }
+    },
+    "els-encants": {
+      "name": "Els Encants flea market",
+      "category": "market",
+      "lat": 41.401,
+      "lng": 2.1862,
+      "radius": 120,
+      "tips": {
+        "dontMiss": [
+          "The mirrored roof reflecting the stalls below."
+        ],
+        "goodToKnow": [
+          "Open Mon, Wed, Fri and Sat (closed Sundays). Monday 12 Oct is a public holiday, so check before going.",
+          "At Glòries, ~15 min walk from the Sagrada Família."
+        ]
+      }
+    },
+    "cactus-garden": {
+      "name": "Cactus garden (Jardins de Mossèn Costa i Llobera)",
+      "category": "park",
+      "lat": 41.3671,
+      "lng": 2.1714,
+      "radius": 150,
+      "tips": {
+        "dontMiss": [
+          "Hundreds of cactus species on a slope above the port."
+        ],
+        "goodToKnow": [
+          "On Montjuïc's lower slope. Free entry."
+        ]
+      }
+    },
+    "pedralbes": {
+      "name": "Pedralbes Monastery",
+      "category": "church",
+      "lat": 41.3956,
+      "lng": 2.1116,
+      "radius": 100,
+      "tips": {
+        "dontMiss": [
+          "The three-level Gothic cloister, one of the most peaceful spots in the city."
+        ],
+        "goodToKnow": [
+          "~2 km west of the hotel. Usually closed Mondays."
         ]
       }
     }
@@ -490,7 +584,7 @@
     {
       "date": "2026-10-09",
       "name": "Friday",
-      "theme": "Fly in · Gothic Quarter · Casa Batlló by night",
+      "theme": "Fly in · Gràcia & Passeig de Gràcia · Casa Batlló by night",
       "events": [
         {
           "id": "fri-flight",
@@ -525,7 +619,7 @@
             "fgc-muntaner"
           ],
           "booking": "aerobus",
-          "description": "1) Outside T1 arrivals take Aerobús A1 to Plaça Catalunya (last stop, ~35 min, €12.85 return; buy the return, you'll use it Monday). 2) At Plaça Catalunya take FGC L6, S1 or S2 to Muntaner (4 stops, ~8 min, T-casual valid; not L7). 3) Walk ~7 min to Carrer de Santaló 8. Door to door ~1 h 15 min. Taxi instead: ~30 min, roughly €35–45."
+          "description": "1) Outside T1 arrivals take Aerobús A1 to Plaça Catalunya (last stop, ~35 min, €12.85 return; buy the return, you'll use it Monday). 2) At Plaça Catalunya take FGC L6, S1 or S2 to Muntaner (4 stops, ~8 min, T-usual valid; not L7). 3) Walk ~7 min to Carrer de Santaló 8. Door to door ~1 h 15 min. Taxi instead: ~30 min, roughly €35–45."
         },
         {
           "id": "fri-checkin",
@@ -548,18 +642,13 @@
           "description": "Menú del día is usually served until ~16:00 on weekdays. No rush today: your only booking is at 21:00."
         },
         {
-          "id": "fri-wander",
+          "id": "fri-explore",
           "label": "16:30 →",
           "start": "2026-10-09T16:30:00+02:00",
-          "end": "2026-10-09T20:15:00+02:00",
+          "end": "2026-10-09T20:45:00+02:00",
           "kind": "free",
-          "title": "Free roam: Gothic Quarter → the sea",
-          "stops": [
-            "cathedral",
-            "placa-reial",
-            "barceloneta"
-          ],
-          "description": "FGC from Muntaner to Catalunya (~10 min). Wander the Gothic Quarter: the Cathedral cloister, Plaça Reial, then drift down to Barceloneta for the sunset colours (~19:20). Leave the beach by ~20:15: metro L4 Barceloneta → Passeig de Gràcia (~10 min, T-casual), then 3 min on foot."
+          "title": "Free roam: Gràcia → Passeig de Gràcia",
+          "description": "Today stays on the hotel side of town. Wander down through Gràcia and the Eixample towards Passeig de Gràcia; sights pop up on the map as you get close."
         },
         {
           "id": "fri-batllo",
@@ -593,7 +682,7 @@
     {
       "date": "2026-10-10",
       "name": "Saturday",
-      "theme": "Gràcia morning · Park Güell · Bunkers sunset",
+      "theme": "Gràcia · Park Güell · Bunkers sunset",
       "events": [
         {
           "id": "sat-gracia",
@@ -601,13 +690,8 @@
           "start": "2026-10-10T10:00:00+02:00",
           "end": "2026-10-10T12:00:00+02:00",
           "kind": "free",
-          "title": "Free roam: Gràcia morning",
-          "stops": [
-            "casa-vicens",
-            "placa-virreina",
-            "carrer-verdi"
-          ],
-          "description": "Gràcia is ~15 min on foot from the hotel. Casa Vicens (Gaudí's first house), coffee in Plaça de la Virreina, browse Carrer de Verdi. Leave by ~12:00 for the ~20 min uphill walk to Park Güell."
+          "title": "Free roam: Gràcia",
+          "description": "Gràcia sits between the hotel and Park Güell. Coffee in a square, wander, then walk up to the park for 12:30 (~20 min uphill)."
         },
         {
           "id": "sat-park-guell",
@@ -634,9 +718,6 @@
           "end": "2026-10-10T17:00:00+02:00",
           "kind": "free",
           "title": "Free roam: long lunch in Gràcia",
-          "stops": [
-            "placa-sol"
-          ],
           "description": "Walk back downhill and take a long lunch outside in a square. No agenda."
         },
         {
@@ -675,7 +756,7 @@
     {
       "date": "2026-10-11",
       "name": "Sunday",
-      "theme": "Sagrada Família · Sant Antoni vermut · Picasso · Montjuïc",
+      "theme": "Sagrada Família · El Born · Picasso · easy evening by the sea",
       "events": [
         {
           "id": "sun-sagrada",
@@ -689,29 +770,13 @@
           "description": "Queue at the Carrer de la Marina door. Doors 8:30, mass 9:00, ~1 h. Free. No photos during mass. Walk round the façades afterwards."
         },
         {
-          "id": "sun-pdg",
+          "id": "sun-oldtown",
           "label": "10:30 →",
           "start": "2026-10-11T10:30:00+02:00",
-          "end": "2026-10-11T12:30:00+02:00",
+          "end": "2026-10-11T15:45:00+02:00",
           "kind": "free",
-          "title": "Free roam: Passeig de Gràcia by day",
-          "stops": [
-            "la-pedrera",
-            "casa-batllo"
-          ],
-          "description": "~20 min walk down from the Sagrada. See La Pedrera's façade and the Block of Discord (Casa Batlló, Amatller, Lleó Morera) in daylight after Friday's night visit."
-        },
-        {
-          "id": "sun-vermut",
-          "label": "12:30 →",
-          "start": "2026-10-11T12:30:00+02:00",
-          "end": "2026-10-11T15:30:00+02:00",
-          "kind": "free",
-          "title": "Free roam: vermut & lunch in Sant Antoni",
-          "stops": [
-            "sant-antoni"
-          ],
-          "description": "Vermouth, olives and chips, then lunch. The Sunday book market around the Mercat de Sant Antoni runs until early afternoon. Leave by ~15:30 for the Picasso Museum (~25 min on foot, or metro)."
+          "title": "Free roam: slow breakfast, then El Born",
+          "description": "No rush after the early mass: breakfast near the Sagrada, then metro or taxi to El Born (~15 min) for vermut and a long lunch. Everything is within a few minutes of the Picasso Museum; sights pop up on the map as you get close."
         },
         {
           "id": "sun-picasso",
@@ -732,40 +797,29 @@
           ]
         },
         {
-          "id": "sun-born",
+          "id": "sun-sea",
           "label": "17:30 →",
           "start": "2026-10-11T17:30:00+02:00",
-          "end": "2026-10-11T18:30:00+02:00",
+          "end": "2026-10-11T20:15:00+02:00",
           "kind": "free",
-          "title": "Free roam: El Born",
-          "stops": [
-            "santa-maria-mar",
-            "passeig-born",
-            "palau-musica"
-          ],
-          "description": "Santa Maria del Mar and Passeig del Born are 2–4 min from the museum, the Palau de la Música façade ~8 min. Leave by ~18:30 for Montjuïc."
+          "title": "Free roam (optional): Ciutadella → the sea",
+          "description": "Only if you still have energy: Ciutadella Park is 5 min from the museum, the beach ~15 min further. Sunset colours over the sea ~19:16. Otherwise, a terrace in El Born."
         },
         {
-          "id": "sun-montjuic",
-          "label": "18:45 →",
-          "start": "2026-10-11T18:45:00+02:00",
-          "end": "2026-10-11T23:00:00+02:00",
-          "kind": "free",
-          "title": "Montjuïc & Poble Sec",
-          "stops": [
-            "mnac",
-            "carrer-blai"
-          ],
-          "alert": true,
-          "alertPlace": "mnac",
-          "description": "Taxi (~15 min) or metro via Espanya (~25 min, then the escalators) to the MNAC steps for the sunset (~19:16). Then walk down to Carrer de Blai for a cheap pintxos crawl."
+          "id": "sun-dinner",
+          "label": "20:30",
+          "start": "2026-10-11T20:30:00+02:00",
+          "end": "2026-10-11T23:30:00+02:00",
+          "kind": "meal",
+          "title": "Dinner by the sea or back in El Born",
+          "description": "Back to the hotel: metro + FGC (~30 min) or taxi (~20 min)."
         }
       ]
     },
     {
       "date": "2026-10-12",
       "name": "Monday",
-      "theme": "Holiday morning · fly home",
+      "theme": "Gothic Quarter & La Rambla · fly home",
       "events": [
         {
           "id": "mon-checkout",
@@ -785,11 +839,8 @@
           "start": "2026-10-12T10:30:00+02:00",
           "end": "2026-10-12T13:00:00+02:00",
           "kind": "free",
-          "title": "Free roam: slow goodbye",
-          "stops": [
-            "la-rambla"
-          ],
-          "description": "Public holiday: shops shut, city relaxed. Breakfast somewhere nice, then La Rambla for the last day of the Festes del Roser. If a Sagrada ticket turned up, this is its slot."
+          "title": "Free roam: Gothic Quarter & La Rambla",
+          "description": "Public holiday: shops shut, city relaxed. FGC to Plaça Catalunya, breakfast, then the Gothic Quarter and La Rambla (last day of the Festes del Roser), with El Raval just across the Rambla if there's time. If a Sagrada ticket turned up, this is its slot."
         },
         {
           "id": "mon-lunch",
@@ -953,13 +1004,13 @@
               "price": "€12.85",
               "url": "https://aerobusbarcelona.es",
               "event": "fri-arrive",
-              "note": "€12.85 return (€7.45 single). Take A1 both ways: both your flights use Terminal 1."
+              "note": "€12.85 return (€7.45 single). A1 both ways: both your flights use Terminal 1. The return is cheaper than two singles if you'll use it Monday too."
             },
             {
-              "id": "t-casual",
-              "title": "T-casual card",
-              "price": "€11.35",
-              "note": "10 metro/bus/FGC rides for €11.35. Covers the FGC train between the hotel (Muntaner) and Plaça Catalunya. Not valid on the Aerobús. Buy at any metro or FGC machine."
+              "id": "t-usual",
+              "title": "T-usual pass, one each",
+              "price": "€22.80 + €1 card",
+              "note": "Unlimited metro, bus and FGC (zone 1) for 30 days, including the hotel ↔ centre trains and the airport metro (L9 Sud). Not valid on the Aerobús. Buy at any metro machine; it's personal, so check whether it asks you to register."
             },
             {
               "id": "hotel-tax",
@@ -1110,16 +1161,9 @@
     {
       "id": "sun-layer",
       "title": "Light layer",
-      "text": "Montjuïc gets cool after sunset, and you won't pass the hotel today.",
+      "text": "You won't pass the hotel today and it gets cool by the sea after sunset.",
       "from": "2026-10-11T07:30:00+02:00",
       "until": "2026-10-11T08:15:00+02:00"
-    },
-    {
-      "id": "fri-batllo-go",
-      "title": "Casa Batlló at 21:00",
-      "text": "Leave Barceloneta by ~20:15: metro L4 to Passeig de Gràcia.",
-      "from": "2026-10-09T19:45:00+02:00",
-      "until": "2026-10-09T20:45:00+02:00"
     }
   ],
   "budget": {
@@ -1130,9 +1174,9 @@
         "note": "Buy on arrival"
       },
       {
-        "item": "T-casual (10 rides)",
-        "cost": "€11.35",
-        "note": "Covers all your metro/bus trips"
+        "item": "T-usual (unlimited)",
+        "cost": "€23.80",
+        "note": "€22.80 + €1 card · metro, bus, FGC, airport metro"
       },
       {
         "item": "Park Güell",
@@ -1162,8 +1206,8 @@
     ],
     "total": {
       "item": "Core total",
-      "cost": "≈ €76 + Casa Batlló",
-      "note": "Aerobús + T-casual + Park Güell + Picasso + tax"
+      "cost": "≈ €89 + Casa Batlló",
+      "note": "Aerobús + T-usual + Park Güell + Picasso + tax"
     }
   },
   "guide": [

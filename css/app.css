@@ -675,6 +675,20 @@ input[type="range"] { flex: 1; accent-color: var(--red); padding: 0; border: 0; 
 .photo-row.miss { opacity: .7; }
 .photo-row b { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/* ---------- PLACES ---------- */
+.places-head { display: flex; gap: 8px; margin: 16px 0 8px; }
+.places-head input { flex: 1; }
+.places-list { padding: 0 12px; }
+.place-form { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.place-form label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 700; color: var(--muted); }
+textarea, select {
+  font: 500 15px var(--font); padding: 10px 12px; border-radius: 12px; resize: vertical;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.loc-box { border: 1px dashed var(--line); border-radius: 14px; padding: 12px; }
+.loc-now { display: flex; align-items: center; gap: 6px; font-size: 13.5px; }
+.loc-now .ic { width: 16px; height: 16px; color: var(--red); }
+
 /* ---------- SETTINGS ---------- */
 .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
 .toggle-row b { font-size: 14.5px; }

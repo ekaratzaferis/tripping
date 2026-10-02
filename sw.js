@@ -1,11 +1,11 @@
 // Offline support: app shell is cached up front, map tiles and CDN assets are
 // cached as you browse (so areas you've looked at work in the metro).
-const VERSION = 'triparw-v5';
+const VERSION = 'triparw-v6';
 const SHELL = [
   './', 'index.html', 'css/app.css', 'manifest.webmanifest', 'icon.svg',
   'js/app.js', 'js/util.js', 'js/store.js', 'js/trip.js', 'js/geo.js', 'js/map.js', 'js/engine.js',
   'js/services.js', 'js/exif.js', 'js/ui.js',
-  'js/views/live.js', 'js/views/plan.js', 'js/views/lists.js', 'js/views/timeline.js', 'js/views/settings.js', 'js/views/details.js',
+  'js/views/live.js', 'js/views/plan.js', 'js/views/lists.js', 'js/views/timeline.js', 'js/views/settings.js', 'js/views/details.js', 'js/views/places.js',
   'data/barcelona-2026.json',
 ];
 const TILE_CACHE = 'triparw-tiles';

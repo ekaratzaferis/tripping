@@ -1,6 +1,7 @@
 // Detail sheets shared by the Live and Plan views: an event, and a place
 // (the "tips" overlay: things not to miss, good to know, directions).
-import { resolvePlace, eventPlaces, hasCoords } from '../trip.js';
+import { resolvePlace, eventPlace, eventPlaces, hasCoords } from '../trip.js';
+import { openPlaceEditor } from './places.js';
 import { esc, cat, fmtDate, fmtTime, fmtDist, distance, directionsUrl, travelEstimate, fmtDuration } from '../util.js';
 import { icon, modal, toast } from '../ui.js';
 
@@ -56,6 +57,7 @@ export function openPlace(ctx, placeOrId, { reason } = {}) {
       </div>
     </div>
     ${refsHtml(place.refs)}
+    ${place.note ? `<div class="callout">📝 <div>${esc(place.note)}</div></div>` : ''}
     ${body || `<p class="muted">No tips saved for this place yet. Wander and enjoy.</p>`}
     ${place.missing ? `<p class="callout">Set your hotel's location in Settings to navigate here.</p>` : ''}
     <div class="btn-row">
@@ -63,10 +65,12 @@ export function openPlace(ctx, placeOrId, { reason } = {}) {
       <a class="btn" href="${directionsUrl(place)}" target="_blank" rel="noopener">${icon('external')} Google Maps</a>` : ''}
       ${place.phone ? `<a class="btn ghost" href="tel:${esc(place.phone.replace(/\s+/g, ''))}">${icon('phone')} Call</a>` : ''}
       ${place.url ? `<a class="btn ghost" href="${esc(place.url)}" target="_blank" rel="noopener">${icon('info')} Website</a>` : ''}
+      ${place.id !== 'hotel' && ctx.trip.places[place.id] ? `<button class="btn ghost" data-act="edit">${icon('edit')} Edit</button>` : ''}
     </div>`, {
     cls: 'place-sheet',
     onMount(el, close) {
       wireCopy(el);
+      el.querySelector('[data-act="edit"]')?.addEventListener('click', () => { close(); openPlaceEditor(ctx, place.id); });
       el.querySelector('[data-act="target"]')?.addEventListener('click', () => {
         ctx.ts.setTarget(isTarget ? null : place.id);
         close();
@@ -86,6 +90,17 @@ export function openEvent(ctx, eventId) {
   const booking = e.booking ? trip.itemById[e.booking] : null;
   const booked = booking && ts.checked(booking.id);
   const visits = ts.visits();
+
+  // Places of interest around this activity (or the next one that has a place).
+  const anchor = eventPlace(trip, e) || trip.events.filter((x) => x.day === e.day && x.startD >= e.startD).map((x) => eventPlace(trip, x)).find(hasCoords);
+  const shownIds = new Set(places.map((p) => p.id));
+  const around = hasCoords(anchor) && anchor.category !== 'airport'
+    ? Object.entries(trip.places)
+      .map(([id, p]) => ({ id, ...p, d: distance(anchor, p) }))
+      .filter((p) => p.d <= 900 && !shownIds.has(p.id) && p.id !== anchor.id && !['airport', 'transport'].includes(p.category))
+      .sort((a, b) => a.d - b.d)
+      .slice(0, 8)
+    : [];
 
   modal(`
     <div class="event-head kind-${e.kind}">
@@ -109,6 +124,14 @@ export function openEvent(ctx, eventId) {
           <span class="place-emoji" style="--accent:${c.color}">${c.emoji}</span>
           <span class="grow"><b>${esc(p.name)}</b><small>${p.missing ? 'Location not set' : esc(c.label)}${seen ? ` · visited ${fmtTime(new Date(v.first), tz)}` : ''}</small></span>
           ${seen ? '<span class="tick">✓</span>' : icon('chevron')}
+        </button>`;
+      }).join('')}</div>` : ''}
+    ${around.length ? `<h4 class="tips-h">Nearby places of interest</h4>
+      <div class="place-list">${around.map((p) => {
+        const c = cat(p.category);
+        return `<button class="place-row" data-place="${esc(p.id)}">
+          <span class="place-emoji" style="--accent:${c.color}">${c.emoji}</span>
+          <span class="grow"><b>${esc(p.name)}</b><small>${esc(c.label)} · ${fmtDist(p.d)} from ${esc(anchor.name)}</small></span>${icon('chevron')}
         </button>`;
       }).join('')}</div>` : ''}
     ${booking ? `<div class="callout">${icon('ticket')} <div><b>${esc(booking.title)}</b>${booking.price ? ` · ${esc(booking.price)}` : ''}<br><span class="muted small">${esc(booking.note || '')}</span>

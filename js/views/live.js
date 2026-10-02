@@ -128,11 +128,15 @@ export function createLiveView(root, ctx) {
       html: homeHtml(hotel.name, targetId === 'hotel'), onClick: () => openPlace(ctx, hotel),
     }] : []);
 
-    const all = s.showAllPlaces
-      ? Object.entries(trip.places).filter(([id]) => !shown.has(id)).map(([id, p]) => ({
+    // Places of interest: all of them with the layers button, otherwise only
+    // the ones within walking distance of where I am right now.
+    const NEAR_M = 700;
+    const meNear = state.pos && state.nearCity ? state.pos : null;
+    const all = Object.entries(trip.places)
+      .filter(([id, p]) => !shown.has(id) && p.category !== 'airport' && (s.showAllPlaces || (meNear && distance(meNear, p) <= NEAR_M)))
+      .map(([id, p]) => ({
         ...p, id, z: 1, title: p.name, html: pinHtml({ category: p.category, small: true }), onClick: () => openPlace(ctx, id),
-      }))
-      : [];
+      }));
     map.setMarkers('all', all);
 
     map.setMarkers('nearby', (nearby.results || []).map((r) => ({
